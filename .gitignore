@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+
+# Flutter / Dart
+.dart_tool/
+.packages
+build/
+**/build/
+apps/mobile/.flutter-plugins
+apps/mobile/.flutter-plugins-dependencies
+apps/mobile/.dart_tool/
+apps/mobile/android/local.properties
+apps/mobile/.gradle-user/
+apps/mobile/.gradle/
+
+# IDE / OS
+.idea/
+.vscode/
+*.log
+Thumbs.db
+Desktop.ini
+
+# Seed outputs
+services/api/seeds/inspection_template_items.json
+
+# Local runtime data
+services/api/data/*.db
+services/api/data/*.sqlite
+services/api/storage/
+dist/
