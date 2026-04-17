@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
 class ApiClient {
@@ -55,14 +56,39 @@ class ApiClient {
   Future<dynamic> postMultipart(
     String path, {
     required String fileField,
-    required String filePath,
+    String? filePath,
+    List<int>? fileBytes,
+    String? fileName,
     Map<String, String>? fields,
   }) async {
     final req = http.MultipartRequest('POST', _uri(path));
     if (fields != null && fields.isNotEmpty) {
       req.fields.addAll(fields);
     }
-    req.files.add(await http.MultipartFile.fromPath(fileField, filePath));
+    if (kIsWeb) {
+      if (fileBytes == null) {
+        throw ArgumentError('Web 环境必须提供 fileBytes，不能使用 filePath');
+      }
+      req.files.add(
+        http.MultipartFile.fromBytes(
+          fileField,
+          fileBytes,
+          filename: fileName ?? 'upload.bin',
+        ),
+      );
+    } else if (fileBytes != null) {
+      req.files.add(
+        http.MultipartFile.fromBytes(
+          fileField,
+          fileBytes,
+          filename: fileName ?? 'upload.bin',
+        ),
+      );
+    } else if (filePath != null && filePath.isNotEmpty) {
+      req.files.add(await http.MultipartFile.fromPath(fileField, filePath));
+    } else {
+      throw ArgumentError('filePath 或 fileBytes 至少提供一项');
+    }
     final streamed = await req.send().timeout(_timeout);
     final resp = await http.Response.fromStream(streamed).timeout(_timeout);
     return _decode(resp);

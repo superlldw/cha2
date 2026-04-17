@@ -2,6 +2,7 @@ from pathlib import Path
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.exceptions import RequestValidationError
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 
@@ -24,6 +25,17 @@ def create_app(database_url: str | None = None, storage_root: str | None = None)
         version="0.2.0",
         openapi_url="/api/v1/openapi.json",
         docs_url="/api/v1/docs",
+    )
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=[
+            "http://127.0.0.1:7212",
+            "http://localhost:7212",
+        ],
+        allow_origin_regex=r"https?://(127\.0\.0\.1|localhost)(:\d+)?",
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
     )
 
     @app.exception_handler(HTTPException)

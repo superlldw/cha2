@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
+
 import '../../core/api/api_client.dart';
 import '../../core/offline/local_db.dart';
 import 'task_models.dart';
@@ -10,9 +12,13 @@ class TaskService {
 
   final ApiClient _api;
   final LocalDb _localDb;
+  bool get _supportsOfflineCache => !kIsWeb;
   bool _isLocalOnlyTask(String taskId) => taskId.startsWith('lt_');
 
   Future<SyncStatusSummary> getSyncStatusSummary() async {
+    if (!_supportsOfflineCache) {
+      return SyncStatusSummary(pending: 0, failed: 0, synced: 0);
+    }
     final map = await _localDb.getSyncStatusSummary();
     return SyncStatusSummary(
       pending: map['pending'] ?? 0,
@@ -22,6 +28,12 @@ class TaskService {
   }
 
   Future<List<TaskListItem>> fetchTasks() async {
+    if (!_supportsOfflineCache) {
+      final data = await _api.get('/tasks') as Map<String, dynamic>;
+      final items =
+          (data['items'] as List<dynamic>? ?? []).cast<Map<String, dynamic>>();
+      return items.map(TaskListItem.fromJson).toList();
+    }
     try {
       final data = await _api.get('/tasks') as Map<String, dynamic>;
       final items =
@@ -125,6 +137,7 @@ class TaskService {
         waterLevel: null,
       );
     } catch (_) {
+      if (!_supportsOfflineCache) rethrow;
       final date = inspectionDate.toIso8601String().split('T').first;
       return _localDb.createLocalTask(
         reservoirName: reservoirName,
@@ -269,6 +282,10 @@ class TaskService {
   }
 
   Future<TaskDetail> fetchTaskDetail(String taskId) async {
+    if (!_supportsOfflineCache) {
+      final data = await _api.get('/tasks/$taskId') as Map<String, dynamic>;
+      return TaskDetail.fromJson(data);
+    }
     if (_isLocalOnlyTask(taskId)) {
       final cached = await _localDb.getTask(taskId);
       if (cached == null) {
@@ -290,6 +307,12 @@ class TaskService {
   }
 
   Future<List<TemplateChapter>> fetchTemplateTree(String taskId) async {
+    if (!_supportsOfflineCache) {
+      final data = await _api.get('/tasks/$taskId/template-tree') as List<dynamic>;
+      return data
+          .map((e) => TemplateChapter.fromJson(e as Map<String, dynamic>))
+          .toList();
+    }
     if (_isLocalOnlyTask(taskId)) {
       final tree = await _localDb.getTemplateTree(taskId);
       return tree
@@ -317,6 +340,25 @@ class TaskService {
     bool? issueFlag,
     String? checkStatus,
   }) async {
+    if (!_supportsOfflineCache) {
+      final query = <String, dynamic>{};
+      if (chapterCode != null && chapterCode.isNotEmpty) {
+        query['chapter_code'] = chapterCode;
+      }
+      if (issueFlag != null) {
+        query['issue_flag'] = issueFlag;
+      }
+      if (checkStatus != null && checkStatus.isNotEmpty) {
+        query['check_status'] = checkStatus;
+      }
+      final data = await _api.get('/tasks/$taskId/results', query: query)
+          as Map<String, dynamic>;
+      final items =
+          (data['items'] as List<dynamic>? ?? []).cast<Map<String, dynamic>>();
+      return items
+          .map((e) => TaskResultItem.fromJson({...e, 'sync_status': 'synced'}))
+          .toList();
+    }
     if (_isLocalOnlyTask(taskId)) {
       final rows = await _localDb.listResultsByTask(taskId);
       final allEvidence = <String, int>{};
@@ -429,6 +471,10 @@ class TaskService {
   }
 
   Future<TaskProgress> fetchTaskProgress(String taskId) async {
+    if (!_supportsOfflineCache) {
+      final data = await _api.get('/tasks/$taskId/progress') as Map<String, dynamic>;
+      return TaskProgress.fromJson(data);
+    }
     if (_isLocalOnlyTask(taskId)) {
       final tree = await _localDb.getTemplateTree(taskId);
       final rows = await _localDb.listResultsByTask(taskId);
@@ -495,6 +541,24 @@ class TaskService {
     required String checkRecord,
     required String suggestion,
   }) async {
+    if (!_supportsOfflineCache) {
+      final data = await _api.post('/results', body: {
+        'task_id': taskId,
+        'item_code': itemCode,
+        'check_status': checkStatus,
+        'issue_flag': issueFlag,
+        'issue_type': issueFlag ? issueType : <String>[],
+        'severity_level': issueFlag ? severityLevel : null,
+        'check_record': checkRecord,
+        'suggestion': suggestion,
+        'location_desc': '',
+        'gps_lat': null,
+        'gps_lng': null,
+        'checked_at': DateTime.now().toUtc().toIso8601String(),
+        'checked_by': 'mobile_user',
+      }) as Map<String, dynamic>;
+      return data['result_id'] as String;
+    }
     final now = DateTime.now().toUtc().toIso8601String();
     final payload = {
       'task_id': taskId,
@@ -546,6 +610,9 @@ class TaskService {
     required String itemCode,
     String? resultId,
   }) async {
+    if (!_supportsOfflineCache) {
+      return 'synced';
+    }
     Map<String, dynamic>? row;
     if (resultId != null && resultId.isNotEmpty) {
       row = await _localDb.findResultByAnyId(resultId);
@@ -555,6 +622,20 @@ class TaskService {
   }
 
   Future<List<EvidenceItem>> fetchResultEvidence(String resultId) async {
+    if (!_supportsOfflineCache) {
+      final data = await _api.get('/results/$resultId/evidence') as Map<String, dynamic>;
+      final items =
+          (data['items'] as List<dynamic>? ?? []).cast<Map<String, dynamic>>();
+      return items
+          .map(
+            (e) => EvidenceItem.fromJson({
+              ...e,
+              'file_url': _api.resolveUrl((e['file_url'] as String? ?? '')),
+              'sync_status': 'synced',
+            }),
+          )
+          .toList();
+    }
     final resultRow = await _localDb.findResultByAnyId(resultId);
     final localResultId = resultRow?['local_result_id']?.toString() ?? resultId;
     final serverResultId = resultRow?['server_result_id']?.toString();
@@ -609,9 +690,28 @@ class TaskService {
 
   Future<String> uploadPhotoEvidence({
     required String resultId,
-    required String filePath,
+    String? filePath,
+    List<int>? fileBytes,
+    String? fileName,
     String? caption,
   }) async {
+    if (!_supportsOfflineCache) {
+      final data = await _api.postMultipart(
+        '/evidence/upload',
+        fileField: 'file',
+        filePath: filePath,
+        fileBytes: fileBytes,
+        fileName: fileName,
+        fields: {
+          'result_id': resultId,
+          'evidence_type': 'photo',
+          if (caption != null && caption.trim().isNotEmpty)
+            'caption': caption.trim(),
+          'shot_time': DateTime.now().toUtc().toIso8601String(),
+        },
+      ) as Map<String, dynamic>;
+      return data['evidence_id'] as String? ?? '';
+    }
     final resultRow = await _localDb.findResultByAnyId(resultId);
     final localResultId = resultRow?['local_result_id']?.toString() ?? resultId;
     final serverResultId = resultRow?['server_result_id']?.toString();
@@ -622,6 +722,8 @@ class TaskService {
           '/evidence/upload',
           fileField: 'file',
           filePath: filePath,
+          fileBytes: fileBytes,
+          fileName: fileName,
           fields: {
             'result_id': serverResultId,
             'evidence_type': 'photo',
@@ -651,7 +753,7 @@ class TaskService {
         final saved = await _localDb.upsertEvidenceMetadata(
           resultLocalId: localResultId,
           evidenceType: 'photo',
-          localFilePath: filePath,
+          localFilePath: filePath ?? '',
           caption: caption,
           syncStatus: 'pending',
           lastError: e.toString(),
@@ -668,7 +770,7 @@ class TaskService {
     final saved = await _localDb.upsertEvidenceMetadata(
       resultLocalId: localResultId,
       evidenceType: 'photo',
-      localFilePath: filePath,
+      localFilePath: filePath ?? '',
       caption: caption,
       syncStatus: 'pending',
       lastError: 'result not synced yet',
@@ -680,6 +782,10 @@ class TaskService {
   }
 
   Future<void> deleteEvidence(String evidenceId) async {
+    if (!_supportsOfflineCache) {
+      await _api.delete('/evidence/$evidenceId');
+      return;
+    }
     final row = await _localDb.findEvidenceByAnyId(evidenceId);
     if (row == null) {
       try {
@@ -714,6 +820,14 @@ class TaskService {
   }
 
   Future<SyncSummary> manualSync({bool onlyFailed = false}) async {
+    if (!_supportsOfflineCache) {
+      return SyncSummary(
+        syncedResults: 0,
+        failedResults: 0,
+        syncedEvidence: 0,
+        failedEvidence: 0,
+      );
+    }
     int syncedResults = 0;
     int failedResults = 0;
     int syncedEvidence = 0;
@@ -889,13 +1003,17 @@ class TaskService {
 
   Future<void> uploadCaptureMedia({
     required String captureId,
-    required String filePath,
+    String? filePath,
+    List<int>? fileBytes,
+    String? fileName,
     String mediaType = 'photo',
   }) async {
     await _api.postMultipart(
       '/captures/$captureId/media',
       fileField: 'file',
       filePath: filePath,
+      fileBytes: fileBytes,
+      fileName: fileName,
       fields: {'media_type': mediaType},
     );
   }

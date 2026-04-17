@@ -1,5 +1,6 @@
 ﻿import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/widgets/loading_error_view.dart';
@@ -204,7 +205,7 @@ class _CaptureInboxDetailPageState extends State<CaptureInboxDetailPage> {
 
   Widget _buildPhoto(CaptureMediaItem media) {
     final localPath = (media.localPath ?? '').trim();
-    if (localPath.isNotEmpty && File(localPath).existsSync()) {
+    if (!kIsWeb && localPath.isNotEmpty && File(localPath).existsSync()) {
       return ClipRRect(
         borderRadius: BorderRadius.circular(6),
         child: Image.file(

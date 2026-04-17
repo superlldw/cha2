@@ -1,8 +1,10 @@
 ﻿import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
+import 'project_structure_config_page.dart';
 import 'task_models.dart';
 import 'task_service.dart';
 
@@ -35,6 +37,7 @@ class _CapturePageState extends State<CapturePage> {
   String? _selectedInstanceId;
   List<StructurePartTemplateItem> _parts = const [];
   String? _selectedPartCode;
+  String? _projectId;
 
   String _status = 'undecided';
   XFile? _photo;
@@ -65,6 +68,7 @@ class _CapturePageState extends State<CapturePage> {
           await widget.taskService.fetchProjectStructureInstances(task.projectId);
       if (!mounted) return;
       setState(() {
+        _projectId = task.projectId;
         _instances = instances.where((e) => e.enabledForCapture).toList();
         _loadingMeta = false;
       });
@@ -106,6 +110,23 @@ class _CapturePageState extends State<CapturePage> {
     final picked = await _picker.pickImage(source: source, imageQuality: 85);
     if (picked == null) return;
     setState(() => _photo = picked);
+  }
+
+  Future<void> _openProjectStructureConfig() async {
+    final projectId = _projectId;
+    if (projectId == null || projectId.isEmpty) return;
+    final changed = await Navigator.push<bool>(
+      context,
+      MaterialPageRoute(
+        builder: (_) => ProjectStructureConfigPage(
+          taskService: widget.taskService,
+          projectId: projectId,
+        ),
+      ),
+    );
+    if (changed == true && mounted) {
+      await _loadMeta();
+    }
   }
 
   Future<void> _mockSpeechInput() async {
@@ -195,7 +216,9 @@ class _CapturePageState extends State<CapturePage> {
 
       await widget.taskService.uploadCaptureMedia(
         captureId: captureId,
-        filePath: _photo!.path,
+        filePath: kIsWeb ? null : _photo!.path,
+        fileBytes: kIsWeb ? await _photo!.readAsBytes() : null,
+        fileName: _photo!.name,
         mediaType: 'photo',
       );
 
@@ -231,11 +254,17 @@ class _CapturePageState extends State<CapturePage> {
                 if (_photo != null) ...[
                   ClipRRect(
                     borderRadius: BorderRadius.circular(8),
-                    child: Image.file(
-                      File(_photo!.path),
-                      height: 180,
-                      fit: BoxFit.cover,
-                    ),
+                    child: kIsWeb
+                        ? Image.network(
+                            _photo!.path,
+                            height: 180,
+                            fit: BoxFit.cover,
+                          )
+                        : Image.file(
+                            File(_photo!.path),
+                            height: 180,
+                            fit: BoxFit.cover,
+                          ),
                   ),
                   const SizedBox(height: 10),
                 ],
@@ -256,28 +285,66 @@ class _CapturePageState extends State<CapturePage> {
                   ],
                 ),
                 const SizedBox(height: 12),
+                if (_instances.isEmpty) ...[
+                  Card(
+                    color: Colors.orange.shade50,
+                    child: Padding(
+                      padding: const EdgeInsets.all(12),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            '当前项目还没有可采集的对象实例',
+                            style: TextStyle(fontWeight: FontWeight.w600),
+                          ),
+                          const SizedBox(height: 6),
+                          const Text(
+                            '请先到“项目对象配置”里完成首次初始化，现场采集页才能选择对象实例和粗部位。',
+                          ),
+                          const SizedBox(height: 10),
+                          FilledButton.tonal(
+                            onPressed: _openProjectStructureConfig,
+                            child: const Text('去配置对象'),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                ],
                 DropdownButtonFormField<String>(
                   initialValue: _selectedInstanceId,
-                  decoration: const InputDecoration(labelText: '对象实例（必选）'),
+                  decoration: InputDecoration(
+                    labelText: '对象实例（必选）',
+                    helperText:
+                        _instances.isEmpty ? '暂无可选对象实例，请先完成项目对象初始化' : null,
+                  ),
                   items: _instances
                       .map((e) => DropdownMenuItem(
                             value: e.instanceId,
                             child: Text(e.instanceName),
                           ))
                       .toList(),
-                  onChanged: _onSelectInstance,
+                  onChanged: _instances.isEmpty ? null : _onSelectInstance,
                 ),
                 const SizedBox(height: 12),
                 DropdownButtonFormField<String>(
                   initialValue: _selectedPartCode,
-                  decoration: const InputDecoration(labelText: '粗部位（必选）'),
+                  decoration: InputDecoration(
+                    labelText: '粗部位（必选）',
+                    helperText: _selectedInstanceId == null || _selectedInstanceId!.isEmpty
+                        ? '请先选择对象实例'
+                        : null,
+                  ),
                   items: _parts
                       .map((e) => DropdownMenuItem(
                             value: e.partCode,
                             child: Text(e.partName),
                           ))
                       .toList(),
-                  onChanged: (v) => setState(() => _selectedPartCode = v),
+                  onChanged: (_selectedInstanceId == null || _selectedInstanceId!.isEmpty)
+                      ? null
+                      : (v) => setState(() => _selectedPartCode = v),
                 ),
                 const SizedBox(height: 12),
                 DropdownButtonFormField<String>(

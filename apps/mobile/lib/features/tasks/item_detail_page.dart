@@ -229,7 +229,12 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
     setState(() => _uploadingPhoto = true);
     try {
       await widget.taskService
-          .uploadPhotoEvidence(resultId: resultId, filePath: photo.path);
+          .uploadPhotoEvidence(
+            resultId: resultId,
+            filePath: photo.path,
+            fileBytes: await photo.readAsBytes(),
+            fileName: photo.name,
+          );
       if (!mounted) return;
       await _loadEvidence();
       if (!mounted) return;

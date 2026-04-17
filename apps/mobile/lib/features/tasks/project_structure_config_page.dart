@@ -64,6 +64,18 @@ class _ProjectStructureConfigPageState extends State<ProjectStructureConfigPage>
   }
 
   bool get _isInitialized => _items.isNotEmpty;
+  List<_PresetMeta> get _sortedPresets {
+    final rows = List<_PresetMeta>.from(_presets);
+    rows.sort((a, b) {
+      final aSelected = _selected[a.objectType] == true;
+      final bSelected = _selected[b.objectType] == true;
+      if (aSelected == bSelected) {
+        return _presets.indexOf(a).compareTo(_presets.indexOf(b));
+      }
+      return aSelected ? -1 : 1;
+    });
+    return rows;
+  }
 
   Future<void> _load() async {
     setState(() {
@@ -231,7 +243,7 @@ class _ProjectStructureConfigPageState extends State<ProjectStructureConfigPage>
                     if (!_isInitialized) ...[
                       const Text('1) 首次初始化：选择预设对象与数量'),
                       const SizedBox(height: 8),
-                      ..._presets.map((p) {
+                      ..._sortedPresets.map((p) {
                         return Card(
                           child: Padding(
                             padding: const EdgeInsets.all(12),
@@ -269,75 +281,129 @@ class _ProjectStructureConfigPageState extends State<ProjectStructureConfigPage>
                       ),
                       const Divider(height: 32),
                     ],
-                    const Text('2) 当前对象实例（可改名/禁用/追加）'),
-                    const SizedBox(height: 8),
-                    if (_items.isEmpty)
-                      const Text('暂无对象实例，请先做首次初始化。')
-                    else
-                      ..._items.map(
-                        (item) => _InstanceTile(
-                          item: item,
-                          onRename: (newName) => _saveRename(item, newName),
-                          onToggleEnabled: (enabled) => _toggleEnabled(item, enabled),
+                    Card(
+                      margin: EdgeInsets.zero,
+                      child: ExpansionTile(
+                        initiallyExpanded: false,
+                        tilePadding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 4,
                         ),
-                      ),
-                    const SizedBox(height: 16),
-                    const Text('3) 追加预设对象'),
-                    Wrap(
-                      spacing: 8,
-                      runSpacing: 8,
-                      children: _presets
-                          .map(
-                            (p) => OutlinedButton(
-                              onPressed: _adding ? null : () => _addPresetInstance(p),
-                              child: Text('+ ${p.label}'),
+                        childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+                        title: const Text('2-4) 对象维护（展开后可改名/禁用/追加）'),
+                        subtitle: Text(
+                          _items.isEmpty
+                              ? '暂无对象实例'
+                              : '当前共 ${_items.length} 个对象实例',
+                        ),
+                        children: [
+                          const Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text('2) 当前对象实例（可改名/禁用/追加）'),
+                          ),
+                          const SizedBox(height: 8),
+                          if (_items.isEmpty)
+                            const Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text('暂无对象实例，请先做首次初始化。'),
+                            )
+                          else
+                            ..._items.map(
+                              (item) => _InstanceTile(
+                                item: item,
+                                onRename: (newName) => _saveRename(item, newName),
+                                onToggleEnabled: (enabled) =>
+                                    _toggleEnabled(item, enabled),
+                              ),
                             ),
-                          )
-                          .toList(),
-                    ),
-                    const SizedBox(height: 16),
-                    const Text('4) 追加自定义对象（必须选大类与模板来源）'),
-                    const SizedBox(height: 8),
-                    TextField(
-                      controller: _customNameController,
-                      decoration: const InputDecoration(labelText: '自定义对象名称'),
-                    ),
-                    const SizedBox(height: 8),
-                    DropdownButtonFormField<String>(
-                      initialValue: _customCategory,
-                      decoration: const InputDecoration(labelText: '所属大类'),
-                      items: const [
-                        DropdownMenuItem(value: 'water_retaining', child: Text('挡水建筑物')),
-                        DropdownMenuItem(value: 'water_releasing', child: Text('泄水建筑物')),
-                        DropdownMenuItem(value: 'water_conveyance', child: Text('输（放）水建筑物')),
-                        DropdownMenuItem(value: 'power_generation', child: Text('发电建筑物')),
-                        DropdownMenuItem(value: 'management', child: Text('管理设施')),
-                        DropdownMenuItem(value: 'environment', child: Text('上下游环境')),
-                        DropdownMenuItem(value: 'other', child: Text('其他')),
-                      ],
-                      onChanged: (v) => setState(() => _customCategory = v ?? 'other'),
-                    ),
-                    const SizedBox(height: 8),
-                    DropdownButtonFormField<String>(
-                      initialValue: _customTemplateType,
-                      decoration: const InputDecoration(labelText: '模板来源类型'),
-                      items: const [
-                        DropdownMenuItem(value: 'main_dam', child: Text('主坝模板')),
-                        DropdownMenuItem(value: 'aux_dam', child: Text('副坝模板')),
-                        DropdownMenuItem(value: 'spillway', child: Text('溢洪道模板')),
-                        DropdownMenuItem(value: 'outlet_tunnel', child: Text('输水洞模板')),
-                        DropdownMenuItem(value: 'spill_tunnel', child: Text('泄洪洞模板')),
-                        DropdownMenuItem(value: 'power_tunnel', child: Text('发电洞模板')),
-                        DropdownMenuItem(value: 'admin_facility', child: Text('管理设施模板')),
-                        DropdownMenuItem(value: 'updownstream_env', child: Text('上下游环境模板')),
-                      ],
-                      onChanged: (v) =>
-                          setState(() => _customTemplateType = v ?? 'main_dam'),
-                    ),
-                    const SizedBox(height: 8),
-                    FilledButton(
-                      onPressed: _adding ? null : _addCustom,
-                      child: Text(_adding ? '追加中...' : '追加自定义对象'),
+                          const SizedBox(height: 16),
+                          const Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text('3) 追加预设对象'),
+                          ),
+                          const SizedBox(height: 8),
+                          Wrap(
+                            spacing: 8,
+                            runSpacing: 8,
+                            children: _presets
+                                .map(
+                                  (p) => OutlinedButton(
+                                    onPressed:
+                                        _adding ? null : () => _addPresetInstance(p),
+                                    child: Text('+ ${p.label}'),
+                                  ),
+                                )
+                                .toList(),
+                          ),
+                          const SizedBox(height: 16),
+                          const Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text('4) 追加自定义对象（必须选大类与模板来源）'),
+                          ),
+                          const SizedBox(height: 8),
+                          TextField(
+                            controller: _customNameController,
+                            decoration:
+                                const InputDecoration(labelText: '自定义对象名称'),
+                          ),
+                          const SizedBox(height: 8),
+                          DropdownButtonFormField<String>(
+                            initialValue: _customCategory,
+                            decoration: const InputDecoration(labelText: '所属大类'),
+                            items: const [
+                              DropdownMenuItem(
+                                  value: 'water_retaining', child: Text('挡水建筑物')),
+                              DropdownMenuItem(
+                                  value: 'water_releasing', child: Text('泄水建筑物')),
+                              DropdownMenuItem(
+                                  value: 'water_conveyance',
+                                  child: Text('输（放）水建筑物')),
+                              DropdownMenuItem(
+                                  value: 'power_generation', child: Text('发电建筑物')),
+                              DropdownMenuItem(
+                                  value: 'management', child: Text('管理设施')),
+                              DropdownMenuItem(
+                                  value: 'environment', child: Text('上下游环境')),
+                              DropdownMenuItem(value: 'other', child: Text('其他')),
+                            ],
+                            onChanged: (v) =>
+                                setState(() => _customCategory = v ?? 'other'),
+                          ),
+                          const SizedBox(height: 8),
+                          DropdownButtonFormField<String>(
+                            initialValue: _customTemplateType,
+                            decoration: const InputDecoration(labelText: '模板来源类型'),
+                            items: const [
+                              DropdownMenuItem(
+                                  value: 'main_dam', child: Text('主坝模板')),
+                              DropdownMenuItem(
+                                  value: 'aux_dam', child: Text('副坝模板')),
+                              DropdownMenuItem(
+                                  value: 'spillway', child: Text('溢洪道模板')),
+                              DropdownMenuItem(
+                                  value: 'outlet_tunnel', child: Text('输水洞模板')),
+                              DropdownMenuItem(
+                                  value: 'spill_tunnel', child: Text('泄洪洞模板')),
+                              DropdownMenuItem(
+                                  value: 'power_tunnel', child: Text('发电洞模板')),
+                              DropdownMenuItem(
+                                  value: 'admin_facility',
+                                  child: Text('管理设施模板')),
+                              DropdownMenuItem(
+                                  value: 'updownstream_env',
+                                  child: Text('上下游环境模板')),
+                            ],
+                            onChanged: (v) => setState(
+                              () => _customTemplateType = v ?? 'main_dam',
+                            ),
+                          ),
+                          const SizedBox(height: 8),
+                          FilledButton(
+                            onPressed: _adding ? null : _addCustom,
+                            child: Text(_adding ? '追加中...' : '追加自定义对象'),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
