@@ -972,6 +972,26 @@ class TaskService {
     return _api.resolveUrl(url);
   }
 
+  Future<String> exportPhotoPackage(String taskId) async {
+    final data = await _api.get('/tasks/$taskId/exports/photo-package')
+        as Map<String, dynamic>;
+    final url = data['file_url'] as String? ?? '';
+    if (url.isEmpty) {
+      throw Exception('empty export url');
+    }
+    return _api.resolveUrl(url);
+  }
+
+  Future<String> exportInspectionDoc(String taskId) async {
+    final data = await _api.get('/tasks/$taskId/exports/inspection-doc')
+        as Map<String, dynamic>;
+    final url = data['file_url'] as String? ?? '';
+    if (url.isEmpty) {
+      throw Exception('empty export url');
+    }
+    return _api.resolveUrl(url);
+  }
+
   Future<String> createCapture({
     required String taskId,
     required String structureInstanceId,
@@ -1030,15 +1050,25 @@ class TaskService {
 
   Future<List<CaptureListItem>> fetchTaskCaptures(
     String taskId, {
-    String reviewStatus = 'pending',
+    String? reviewStatus = 'pending',
   }) async {
+    final query = <String, dynamic>{};
+    if (reviewStatus != null && reviewStatus.isNotEmpty) {
+      query['review_status'] = reviewStatus;
+    }
     final data = await _api.get(
       '/tasks/$taskId/captures',
-      query: {'review_status': reviewStatus},
+      query: query.isEmpty ? null : query,
     ) as Map<String, dynamic>;
     final items =
         (data['items'] as List<dynamic>? ?? []).cast<Map<String, dynamic>>();
     return items.map(CaptureListItem.fromJson).toList();
+  }
+
+  Future<List<CaptureListItem>> fetchAllTaskCaptures(String taskId) async {
+    final items = await fetchTaskCaptures(taskId, reviewStatus: 'confirmed');
+    items.sort((a, b) => b.createdAt.compareTo(a.createdAt));
+    return items;
   }
 
   Future<CaptureDetail> fetchCaptureDetail(String captureId) async {
@@ -1076,6 +1106,23 @@ class TaskService {
       linkedResultId: raw.linkedResultId,
       media: mappedMedia,
     );
+  }
+
+  Future<void> deleteCapture(String captureId) async {
+    try {
+      await _api.delete('/captures/$captureId');
+    } catch (e) {
+      final message = e.toString();
+      if (message.contains('Method Not Allowed')) {
+        await _api.post('/captures/$captureId/delete', body: const {});
+        return;
+      }
+      rethrow;
+    }
+  }
+
+  Future<void> deleteCaptureCompletely(String captureId) async {
+    await _api.post('/captures/$captureId/purge', body: const {});
   }
 
   Future<String> confirmCapture({

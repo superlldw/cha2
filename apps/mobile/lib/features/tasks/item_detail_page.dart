@@ -12,6 +12,8 @@ class ItemDetailPage extends StatefulWidget {
     required this.chapterCode,
     required this.item,
     required this.initialResult,
+    this.compactMode = false,
+    this.initialCompactEvidence = const [],
   });
 
   final TaskService taskService;
@@ -19,6 +21,8 @@ class ItemDetailPage extends StatefulWidget {
   final String chapterCode;
   final TemplateInspectionItem item;
   final TaskResultItem? initialResult;
+  final bool compactMode;
+  final List<EvidenceItem> initialCompactEvidence;
 
   @override
   State<ItemDetailPage> createState() => _ItemDetailPageState();
@@ -65,6 +69,7 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
     _resultId =
         (result?.resultId.isNotEmpty ?? false) ? result!.resultId : null;
     _resultSyncStatus = result?.syncStatus ?? 'pending';
+    _evidenceItems = List<EvidenceItem>.from(widget.initialCompactEvidence);
     if (_resultId != null) {
       _loadEvidence();
     }
@@ -201,7 +206,11 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
       await _refreshResultSyncStatus();
       final items = await widget.taskService.fetchResultEvidence(resultId);
       if (!mounted) return;
-      setState(() => _evidenceItems = items);
+      final merged = <String, EvidenceItem>{
+        for (final item in widget.initialCompactEvidence) item.evidenceId: item,
+        for (final item in items) item.evidenceId: item,
+      };
+      setState(() => _evidenceItems = merged.values.toList());
     } catch (e) {
       if (!mounted) return;
       ScaffoldMessenger.of(context)
@@ -271,6 +280,173 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
     return '${local.year}-${two(local.month)}-${two(local.day)} ${two(local.hour)}:${two(local.minute)}';
   }
 
+  Future<void> _mockSpeechInput() async {
+    final controller = TextEditingController(text: _checkRecordController.text);
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('语音录入（第一阶段）'),
+        content: TextField(
+          controller: controller,
+          minLines: 3,
+          maxLines: 6,
+          decoration: const InputDecoration(
+            hintText: '当前阶段先用手工补录/Mock 文本',
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('取消'),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: const Text('确定'),
+          ),
+        ],
+      ),
+    );
+    if (ok == true) {
+      setState(() => _checkRecordController.text = controller.text.trim());
+    }
+  }
+
+  Future<void> _showImagePreview(EvidenceItem evidence) async {
+    await Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (_) => Scaffold(
+          backgroundColor: Colors.black,
+          appBar: AppBar(
+            backgroundColor: Colors.black,
+            foregroundColor: Colors.white,
+            title: const Text('查看照片'),
+          ),
+          body: Center(
+            child: InteractiveViewer(
+              minScale: 0.8,
+              maxScale: 4,
+              child: Image.network(
+                evidence.fileUrl,
+                fit: BoxFit.contain,
+                errorBuilder: (_, __, ___) => const Text(
+                  '图片加载失败',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildCompactBody() {
+    final photos = _evidenceItems.where((e) => e.evidenceType == 'photo').toList();
+
+    return ListView(
+      padding: const EdgeInsets.fromLTRB(16, 16, 16, 90),
+      children: [
+        Text(
+          widget.item.itemName,
+          style: Theme.of(context).textTheme.titleLarge,
+        ),
+        const SizedBox(height: 12),
+        Text('图片 (${photos.length})'),
+        const SizedBox(height: 8),
+        if (_loadingEvidence)
+          const Padding(
+            padding: EdgeInsets.symmetric(vertical: 8),
+            child: LinearProgressIndicator(),
+          )
+        else if (photos.isEmpty)
+          Container(
+            height: 120,
+            decoration: BoxDecoration(
+              color: Colors.grey.shade100,
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: Colors.grey.shade300),
+            ),
+            alignment: Alignment.center,
+            child: const Text('暂无照片'),
+          )
+        else
+          Wrap(
+            spacing: 10,
+            runSpacing: 10,
+            children: photos
+                .map(
+                  (evidence) => InkWell(
+                    onTap: () => _showImagePreview(evidence),
+                    borderRadius: BorderRadius.circular(12),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: Stack(
+                        children: [
+                          Image.network(
+                            evidence.fileUrl,
+                            width: 110,
+                            height: 110,
+                            fit: BoxFit.cover,
+                            errorBuilder: (_, __, ___) => Container(
+                              width: 110,
+                              height: 110,
+                              color: Colors.grey.shade300,
+                              alignment: Alignment.center,
+                              child: const Icon(Icons.broken_image_outlined),
+                            ),
+                          ),
+                          Positioned(
+                            right: 6,
+                            bottom: 6,
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                              decoration: BoxDecoration(
+                                color: Colors.black54,
+                                borderRadius: BorderRadius.circular(999),
+                              ),
+                              child: Text(
+                                _formatShotTime(evidence.shotTime),
+                                style: const TextStyle(color: Colors.white, fontSize: 10),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                )
+                .toList(),
+          ),
+        const SizedBox(height: 16),
+        OutlinedButton.icon(
+          onPressed: _mockSpeechInput,
+          icon: const Icon(Icons.mic),
+          label: const Text('录音/语音录入（MVP）'),
+        ),
+        const SizedBox(height: 8),
+        TextField(
+          controller: _checkRecordController,
+          minLines: 3,
+          maxLines: 5,
+          decoration: const InputDecoration(
+            labelText: '检查记录',
+            hintText: '可补充或修改记录内容',
+          ),
+        ),
+        const SizedBox(height: 12),
+        TextField(
+          controller: _suggestionController,
+          minLines: 3,
+          maxLines: 5,
+          decoration: const InputDecoration(
+            labelText: '处理建议',
+            hintText: '填写建议处理方式',
+          ),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final pendingEvidence =
@@ -282,7 +458,9 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
 
     return Scaffold(
       appBar: AppBar(title: Text(widget.item.itemName)),
-      body: ListView(
+      body: widget.compactMode
+          ? _buildCompactBody()
+          : ListView(
         padding: const EdgeInsets.fromLTRB(16, 16, 16, 90),
         children: [
           Text('检查项编码: ${widget.item.itemCode}'),

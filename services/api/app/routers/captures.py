@@ -8,6 +8,7 @@ from sqlalchemy.orm import Session
 from app.db.models import (
     CaptureMediaORM,
     CaptureRecordORM,
+    InspectionEvidenceORM,
     InspectionResultORM,
     InspectionTaskORM,
     ProjectStructureInstanceORM,
@@ -33,6 +34,77 @@ from app.services.project_structures import get_part_name
 from app.services.template_store import get_task_template_tree, get_template_item
 
 router = APIRouter(prefix="/api/v1", tags=["captures"])
+
+
+def _soft_delete_capture(capture_id: str, db: Session) -> ApiResponse[dict[str, str]]:
+    capture = db.scalar(
+        select(CaptureRecordORM).where(
+            CaptureRecordORM.capture_id == capture_id,
+            CaptureRecordORM.deleted_at.is_(None),
+        )
+    )
+    if capture is None:
+        raise HTTPException(status_code=404, detail="capture not found")
+    if capture.review_status == CaptureReviewStatus.confirmed.value:
+        raise HTTPException(status_code=400, detail="confirmed capture cannot be deleted")
+
+    media_rows = db.scalars(
+        select(CaptureMediaORM).where(
+            CaptureMediaORM.capture_id == capture_id,
+            CaptureMediaORM.deleted_at.is_(None),
+        )
+    ).all()
+    for media in media_rows:
+        media.deleted_at = datetime.utcnow()
+
+    capture.deleted_at = datetime.utcnow()
+    db.commit()
+    return ApiResponse(data={"capture_id": capture_id})
+
+
+def _purge_capture_with_linked_result(capture_id: str, db: Session) -> ApiResponse[dict[str, str]]:
+    capture = db.scalar(
+        select(CaptureRecordORM).where(
+            CaptureRecordORM.capture_id == capture_id,
+            CaptureRecordORM.deleted_at.is_(None),
+        )
+    )
+    if capture is None:
+        raise HTTPException(status_code=404, detail="capture not found")
+
+    now = datetime.utcnow()
+    media_rows = db.scalars(
+        select(CaptureMediaORM).where(
+            CaptureMediaORM.capture_id == capture_id,
+            CaptureMediaORM.deleted_at.is_(None),
+        )
+    ).all()
+    for media in media_rows:
+        media.deleted_at = now
+
+    linked_result_id = (capture.linked_result_id or "").strip()
+    if linked_result_id:
+        evidence_rows = db.scalars(
+            select(InspectionEvidenceORM).where(
+                InspectionEvidenceORM.result_id == linked_result_id,
+                InspectionEvidenceORM.deleted_at.is_(None),
+            )
+        ).all()
+        for evidence in evidence_rows:
+            evidence.deleted_at = now
+
+        result = db.scalar(
+            select(InspectionResultORM).where(
+                InspectionResultORM.result_id == linked_result_id,
+                InspectionResultORM.deleted_at.is_(None),
+            )
+        )
+        if result is not None:
+            result.deleted_at = now
+
+    capture.deleted_at = now
+    db.commit()
+    return ApiResponse(data={"capture_id": capture_id})
 
 
 @router.post("/captures", response_model=ApiResponse[CreateCaptureData])
@@ -142,6 +214,22 @@ def update_capture_speech_text(
     return ApiResponse(
         data=UpdateCaptureSpeechData(capture_id=capture.capture_id, speech_text=capture.speech_text)
     )
+
+
+@router.delete("/captures/{capture_id}", response_model=ApiResponse[dict[str, str]])
+def delete_capture(capture_id: str, db: Session = Depends(get_db)) -> ApiResponse[dict[str, str]]:
+    return _soft_delete_capture(capture_id, db)
+
+
+@router.post("/captures/{capture_id}/delete", response_model=ApiResponse[dict[str, str]])
+def delete_capture_compat(capture_id: str, db: Session = Depends(get_db)) -> ApiResponse[dict[str, str]]:
+    # Compatibility endpoint for web/dev environments where DELETE may lag behind client updates.
+    return _soft_delete_capture(capture_id, db)
+
+
+@router.post("/captures/{capture_id}/purge", response_model=ApiResponse[dict[str, str]])
+def purge_capture(capture_id: str, db: Session = Depends(get_db)) -> ApiResponse[dict[str, str]]:
+    return _purge_capture_with_linked_result(capture_id, db)
 
 
 @router.get("/tasks/{task_id}/captures", response_model=ApiResponse[CaptureListData])

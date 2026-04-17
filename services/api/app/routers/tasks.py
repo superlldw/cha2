@@ -17,7 +17,12 @@ from app.schemas.tasks import (
     TaskListItem,
     TemplateTreeChapterNode,
 )
-from app.services.export_service import export_issue_list_csv, export_photo_sheet_csv
+from app.services.export_service import (
+    export_inspection_docx,
+    export_issue_list_csv,
+    export_photo_package_zip,
+    export_photo_sheet_csv,
+)
 from app.services.template_store import get_task_template_tree
 
 router = APIRouter(prefix="/api/v1", tags=["tasks"])
@@ -205,3 +210,41 @@ def export_photo_sheet(task_id: str, db: Session = Depends(get_db)) -> ApiRespon
 
     file_name, file_url = export_photo_sheet_csv(db=db, task=task, storage_root=storage_root)
     return ApiResponse(data=ExportFileData(file_name=file_name, file_url=file_url, format="csv"))
+
+
+@router.get("/tasks/{task_id}/exports/photo-package", response_model=ApiResponse[ExportFileData])
+def export_photo_package(task_id: str, db: Session = Depends(get_db)) -> ApiResponse[ExportFileData]:
+    task = db.scalar(
+        select(InspectionTaskORM).where(
+            InspectionTaskORM.task_id == task_id,
+            InspectionTaskORM.deleted_at.is_(None),
+        )
+    )
+    if task is None:
+        raise HTTPException(status_code=404, detail="task not found")
+
+    storage_root = db.info.get("storage_root")
+    if storage_root is None:
+        raise HTTPException(status_code=500, detail="storage not configured")
+
+    file_name, file_url = export_photo_package_zip(db=db, task=task, storage_root=storage_root)
+    return ApiResponse(data=ExportFileData(file_name=file_name, file_url=file_url, format="zip"))
+
+
+@router.get("/tasks/{task_id}/exports/inspection-doc", response_model=ApiResponse[ExportFileData])
+def export_inspection_doc(task_id: str, db: Session = Depends(get_db)) -> ApiResponse[ExportFileData]:
+    task = db.scalar(
+        select(InspectionTaskORM).where(
+            InspectionTaskORM.task_id == task_id,
+            InspectionTaskORM.deleted_at.is_(None),
+        )
+    )
+    if task is None:
+        raise HTTPException(status_code=404, detail="task not found")
+
+    storage_root = db.info.get("storage_root")
+    if storage_root is None:
+        raise HTTPException(status_code=500, detail="storage not configured")
+
+    file_name, file_url = export_inspection_docx(db=db, task=task, storage_root=storage_root)
+    return ApiResponse(data=ExportFileData(file_name=file_name, file_url=file_url, format="docx"))

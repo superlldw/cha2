@@ -35,6 +35,7 @@ class _CaptureInboxDetailPageState extends State<CaptureInboxDetailPage> {
 
   bool _loading = true;
   bool _submitting = false;
+  bool _deleting = false;
   String? _error;
   CaptureDetail? _capture;
   List<TemplateInspectionItem> _candidateItems = const [];
@@ -93,22 +94,94 @@ class _CaptureInboxDetailPageState extends State<CaptureInboxDetailPage> {
     }
   }
 
+  List<String> _partHints(CaptureDetail capture) {
+    switch (capture.partCode) {
+      case 'dam_crest':
+        return ['crest', '坝顶', '顶坝'];
+      case 'upstream_face':
+        return ['upstream', '上游'];
+      case 'downstream_face':
+        return ['downstream', '下游'];
+      case 'dam_abutment':
+        return ['abutment', '坝肩'];
+      case 'dam_foundation':
+        return ['foundation', '坝基', '基础'];
+      case 'inlet':
+        return ['inlet', '进口', '进水口'];
+      case 'control':
+        return ['control', '控制'];
+      case 'chute':
+        return ['chute', '泄槽'];
+      case 'energy_dissipation':
+        return ['energy', 'dissipation', '消能'];
+      case 'tailwater':
+        return ['tailwater', '尾水'];
+      case 'tunnel_body':
+        return ['tunnel', 'body', '洞身'];
+      case 'outlet':
+        return ['outlet', '出口'];
+      case 'hoist':
+        return ['hoist', '启闭'];
+      case 'main_building':
+        return ['building', '主体', '建筑'];
+      case 'equipment':
+        return ['equipment', '设备'];
+      case 'power_lighting':
+        return ['power', 'lighting', '电源', '照明'];
+      case 'communication_monitor':
+        return ['communication', 'monitor', '通信', '监测'];
+      case 'surrounding_road':
+        return ['road', '道路', '周边'];
+      case 'bank':
+        return ['bank', '库岸'];
+      case 'river_channel':
+        return ['river', 'channel', '河道'];
+      case 'slope':
+        return ['slope', '边坡', '岸坡'];
+      case 'bridge_path':
+        return ['bridge', 'path', '桥', '通道'];
+      case 'hazard_zone':
+        return ['hazard', 'zone', '隐患', '障碍'];
+      default:
+        return [
+          capture.partCode,
+          capture.partName,
+        ].where((e) => e.trim().isNotEmpty).toList();
+    }
+  }
+
   List<TemplateInspectionItem> _filterCandidates(
     List<TemplateInspectionItem> items,
     CaptureDetail capture,
   ) {
-    final partTokens = <String>[capture.partCode, capture.partName];
-    final candidates = items.where((item) {
+    final hints = _partHints(capture)
+        .map((e) => e.trim().toLowerCase())
+        .where((e) => e.isNotEmpty)
+        .toList();
+
+    int scoreOf(TemplateInspectionItem item) {
       final code = item.itemCode.toLowerCase();
       final name = item.itemName.toLowerCase();
-      for (final token in partTokens) {
-        final t = token.toLowerCase();
-        if (t.isEmpty) continue;
-        if (code.contains(t) || name.contains(t)) return true;
+      var score = 0;
+      for (final hint in hints) {
+        if (code.contains(hint)) score += 3;
+        if (name.contains(hint)) score += 4;
       }
-      return false;
-    }).toList();
-    return candidates.isEmpty ? items : candidates;
+      if (code.startsWith('a1_')) score -= 10;
+      return score;
+    }
+
+    final scored = items
+        .map((item) => (item: item, score: scoreOf(item)))
+        .where((entry) => entry.score > 0)
+        .toList()
+      ..sort((a, b) => b.score.compareTo(a.score));
+
+    if (scored.isNotEmpty) {
+      return scored.map((entry) => entry.item).toList();
+    }
+
+    return items.where((item) => !item.itemCode.toLowerCase().startsWith('a1_')).toList();
   }
 
   String _mapQuickStatusToCheckStatus(String quickStatus) {
@@ -203,6 +276,42 @@ class _CaptureInboxDetailPageState extends State<CaptureInboxDetailPage> {
     }
   }
 
+  Future<void> _deleteCapture() async {
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('删除待整理记录'),
+        content: const Text('删除后不可恢复，确定要删除这条待整理记录吗？'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('取消'),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: const Text('删除'),
+          ),
+        ],
+      ),
+    );
+    if (confirmed != true) return;
+
+    setState(() => _deleting = true);
+    try {
+      await widget.taskService.deleteCapture(widget.captureId);
+      if (!mounted) return;
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text('待整理记录已删除')));
+      Navigator.pop(context, true);
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('删除失败: $e')));
+    } finally {
+      if (mounted) setState(() => _deleting = false);
+    }
+  }
+
   Widget _buildPhoto(CaptureMediaItem media) {
     final localPath = (media.localPath ?? '').trim();
     if (!kIsWeb && localPath.isNotEmpty && File(localPath).existsSync()) {
@@ -249,8 +358,25 @@ class _CaptureInboxDetailPageState extends State<CaptureInboxDetailPage> {
   @override
   Widget build(BuildContext context) {
     final capture = _capture;
+    final canDelete = capture?.reviewStatus == 'pending';
     return Scaffold(
-      appBar: AppBar(title: const Text('待整理详情')),
+      appBar: AppBar(
+        title: const Text('待整理详情'),
+        actions: [
+          if (canDelete)
+            IconButton(
+              onPressed: _deleting ? null : _deleteCapture,
+              tooltip: '删除',
+              icon: _deleting
+                  ? const SizedBox(
+                      width: 20,
+                      height: 20,
+                      child: CircularProgressIndicator(strokeWidth: 2),
+                    )
+                  : const Icon(Icons.delete_outline),
+            ),
+        ],
+      ),
       body: _loading
           ? const Center(child: CircularProgressIndicator())
           : _error != null
