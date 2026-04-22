@@ -9,10 +9,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  archive: ^3.6.1
   http: ^1.2.2
   image_picker: ^1.1.2
+  open_filex: ^4.7.0
   sqflite: ^2.4.1
   path: ^1.9.1
+  path_provider: ^2.1.5
   url_launcher: ^6.3.2
 
 dev_dependencies:
@@ -22,3 +25,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/inspection_template_items.json

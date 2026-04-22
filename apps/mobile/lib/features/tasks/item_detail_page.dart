@@ -1,4 +1,7 @@
-﻿import 'package:flutter/material.dart';
+﻿import 'dart:io';
+
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 import 'task_models.dart';
@@ -117,6 +120,8 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
 
   String _syncStatusLabel(String value) {
     switch (value) {
+      case 'local':
+        return '已保存到本机';
       case 'pending':
         return '待同步';
       case 'synced':
@@ -325,11 +330,11 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
             child: InteractiveViewer(
               minScale: 0.8,
               maxScale: 4,
-              child: Image.network(
-                evidence.fileUrl,
+              child: _buildEvidenceImage(
+                evidence,
                 fit: BoxFit.contain,
-                errorBuilder: (_, __, ___) => const Text(
-                  '图片加载失败',
+                errorWidget: const Text(
+                  '??????',
                   style: TextStyle(color: Colors.white),
                 ),
               ),
@@ -337,6 +342,50 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildEvidenceImage(
+    EvidenceItem evidence, {
+    BoxFit fit = BoxFit.cover,
+    Widget? errorWidget,
+    double? width,
+    double? height,
+  }) {
+    final path = evidence.fileUrl.trim();
+    if (!kIsWeb &&
+        path.isNotEmpty &&
+        (path.startsWith('/') || path.contains(r':\'))) {
+      return Image.file(
+        File(path),
+        width: width,
+        height: height,
+        fit: fit,
+        errorBuilder: (_, __, ___) =>
+            errorWidget ??
+            Container(
+              width: width,
+              height: height,
+              color: Colors.grey.shade300,
+              alignment: Alignment.center,
+              child: const Icon(Icons.broken_image_outlined),
+            ),
+      );
+    }
+    return Image.network(
+      path,
+      width: width,
+      height: height,
+      fit: fit,
+      errorBuilder: (_, __, ___) =>
+          errorWidget ??
+          Container(
+            width: width,
+            height: height,
+            color: Colors.grey.shade300,
+            alignment: Alignment.center,
+            child: const Icon(Icons.broken_image_outlined),
+          ),
     );
   }
 
@@ -382,18 +431,11 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                       borderRadius: BorderRadius.circular(12),
                       child: Stack(
                         children: [
-                          Image.network(
-                            evidence.fileUrl,
+                          _buildEvidenceImage(
+                            evidence,
                             width: 110,
                             height: 110,
                             fit: BoxFit.cover,
-                            errorBuilder: (_, __, ___) => Container(
-                              width: 110,
-                              height: 110,
-                              color: Colors.grey.shade300,
-                              alignment: Alignment.center,
-                              child: const Icon(Icons.broken_image_outlined),
-                            ),
                           ),
                           Positioned(
                             right: 6,

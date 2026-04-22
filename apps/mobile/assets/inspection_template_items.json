@@ -1,0 +1,5438 @@
+{
+  "seed_version": "v1",
+  "item_count": 292,
+  "items": [
+    {
+      "item_id": "tmpl_a1",
+      "item_code": "A1",
+      "chapter_code": "A1",
+      "parent_code": null,
+      "item_name": "现场安全检查基本情况",
+      "item_type": "chapter",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 1000
+    },
+    {
+      "item_id": "tmpl_a1_basic",
+      "item_code": "A1_BASIC",
+      "chapter_code": "A1",
+      "parent_code": "A1",
+      "item_name": "基本情况",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 1100
+    },
+    {
+      "item_id": "tmpl_a1_basic_res_name",
+      "item_code": "A1_BASIC_RES_NAME",
+      "chapter_code": "A1",
+      "parent_code": "A1_BASIC",
+      "item_name": "水库名称",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 1101
+    },
+    {
+      "item_id": "tmpl_a1_basic_desc",
+      "item_code": "A1_BASIC_DESC",
+      "chapter_code": "A1",
+      "parent_code": "A1_BASIC",
+      "item_name": "水库名称及基本情况描述",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 1102
+    },
+    {
+      "item_id": "tmpl_a1_hub_main_structures",
+      "item_code": "A1_HUB_MAIN_STRUCTURES",
+      "chapter_code": "A1",
+      "parent_code": "A1_BASIC",
+      "item_name": "枢纽工程主要建筑物",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 1103
+    },
+    {
+      "item_id": "tmpl_a1_flood_protect_obj",
+      "item_code": "A1_FLOOD_PROTECT_OBJ",
+      "chapter_code": "A1",
+      "parent_code": "A1_BASIC",
+      "item_name": "水库防洪保护对象",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 1104
+    },
+    {
+      "item_id": "tmpl_a1_check_time",
+      "item_code": "A1_CHECK_TIME",
+      "chapter_code": "A1",
+      "parent_code": "A1_BASIC",
+      "item_name": "检查时间",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 1105
+    },
+    {
+      "item_id": "tmpl_a1_weather",
+      "item_code": "A1_WEATHER",
+      "chapter_code": "A1",
+      "parent_code": "A1_BASIC",
+      "item_name": "天气",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 1106
+    },
+    {
+      "item_id": "tmpl_a1_water_level",
+      "item_code": "A1_WATER_LEVEL",
+      "chapter_code": "A1",
+      "parent_code": "A1_BASIC",
+      "item_name": "检查时库水位/m",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 1107
+    },
+    {
+      "item_id": "tmpl_a1_storage",
+      "item_code": "A1_STORAGE",
+      "chapter_code": "A1",
+      "parent_code": "A1_BASIC",
+      "item_name": "检查时库容/m³",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 1108
+    },
+    {
+      "item_id": "tmpl_a1_inspectors",
+      "item_code": "A1_INSPECTORS",
+      "chapter_code": "A1",
+      "parent_code": "A1_BASIC",
+      "item_name": "检查人员",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 1109
+    },
+    {
+      "item_id": "tmpl_a1_main_problem_desc",
+      "item_code": "A1_MAIN_PROBLEM_DESC",
+      "chapter_code": "A1",
+      "parent_code": "A1_BASIC",
+      "item_name": "现场检查发现的主要问题描述",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 1110
+    },
+    {
+      "item_id": "tmpl_a2",
+      "item_code": "A2",
+      "chapter_code": "A2",
+      "parent_code": null,
+      "item_name": "挡水建筑物现场检查情况——土石坝",
+      "item_type": "chapter",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 2000
+    },
+    {
+      "item_id": "tmpl_a2_crest",
+      "item_code": "A2_CREST",
+      "chapter_code": "A2",
+      "parent_code": "A2",
+      "item_name": "坝顶",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 2100
+    },
+    {
+      "item_id": "tmpl_a2_crest_road",
+      "item_code": "A2_CREST_ROAD",
+      "chapter_code": "A2",
+      "parent_code": "A2_CREST",
+      "item_name": "坝顶路面",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 2101
+    },
+    {
+      "item_id": "tmpl_a2_crest_drain",
+      "item_code": "A2_CREST_DRAIN",
+      "chapter_code": "A2",
+      "parent_code": "A2_CREST",
+      "item_name": "坝顶排水设施",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 2102
+    },
+    {
+      "item_id": "tmpl_a2_crest_wave_wall",
+      "item_code": "A2_CREST_WAVE_WALL",
+      "chapter_code": "A2",
+      "parent_code": "A2_CREST",
+      "item_name": "防浪墙",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 2103
+    },
+    {
+      "item_id": "tmpl_a2_body",
+      "item_code": "A2_BODY",
+      "chapter_code": "A2",
+      "parent_code": "A2",
+      "item_name": "坝体",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 2200
+    },
+    {
+      "item_id": "tmpl_a2_body_fill",
+      "item_code": "A2_BODY_FILL",
+      "chapter_code": "A2",
+      "parent_code": "A2_BODY",
+      "item_name": "坝体填筑体",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 2201
+    },
+    {
+      "item_id": "tmpl_a2_body_appearance",
+      "item_code": "A2_BODY_APPEARANCE",
+      "chapter_code": "A2",
+      "parent_code": "A2_BODY",
+      "item_name": "坝体表观",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 2202
+    },
+    {
+      "item_id": "tmpl_a2_body_up_protect",
+      "item_code": "A2_BODY_UP_PROTECT",
+      "chapter_code": "A2",
+      "parent_code": "A2_BODY",
+      "item_name": "上游坝坡护坡设施",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 2203
+    },
+    {
+      "item_id": "tmpl_a2_body_up_cushion",
+      "item_code": "A2_BODY_UP_CUSHION",
+      "chapter_code": "A2",
+      "parent_code": "A2_BODY",
+      "item_name": "上游坝坡垫层",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 2204
+    },
+    {
+      "item_id": "tmpl_a2_body_up_filter",
+      "item_code": "A2_BODY_UP_FILTER",
+      "chapter_code": "A2",
+      "parent_code": "A2_BODY",
+      "item_name": "上游坝坡反滤层",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 2205
+    },
+    {
+      "item_id": "tmpl_a2_body_up_drain",
+      "item_code": "A2_BODY_UP_DRAIN",
+      "chapter_code": "A2",
+      "parent_code": "A2_BODY",
+      "item_name": "上游坝坡排水设施",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 2206
+    },
+    {
+      "item_id": "tmpl_a2_body_down_protect",
+      "item_code": "A2_BODY_DOWN_PROTECT",
+      "chapter_code": "A2",
+      "parent_code": "A2_BODY",
+      "item_name": "下游坝坡护坡设施",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 2207
+    },
+    {
+      "item_id": "tmpl_a2_body_down_cushion",
+      "item_code": "A2_BODY_DOWN_CUSHION",
+      "chapter_code": "A2",
+      "parent_code": "A2_BODY",
+      "item_name": "下游坝坡垫层",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 2208
+    },
+    {
+      "item_id": "tmpl_a2_body_down_filter",
+      "item_code": "A2_BODY_DOWN_FILTER",
+      "chapter_code": "A2",
+      "parent_code": "A2_BODY",
+      "item_name": "下游坝坡反滤层",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 2209
+    },
+    {
+      "item_id": "tmpl_a2_body_down_drain",
+      "item_code": "A2_BODY_DOWN_DRAIN",
+      "chapter_code": "A2",
+      "parent_code": "A2_BODY",
+      "item_name": "下游坝坡排水设施",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 2210
+    },
+    {
+      "item_id": "tmpl_a2_found",
+      "item_code": "A2_FOUND",
+      "chapter_code": "A2",
+      "parent_code": "A2",
+      "item_name": "坝基",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 2300
+    },
+    {
+      "item_id": "tmpl_a2_found_up",
+      "item_code": "A2_FOUND_UP",
+      "chapter_code": "A2",
+      "parent_code": "A2_FOUND",
+      "item_name": "坝基上游",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 2301
+    },
+    {
+      "item_id": "tmpl_a2_found_down",
+      "item_code": "A2_FOUND_DOWN",
+      "chapter_code": "A2",
+      "parent_code": "A2_FOUND",
+      "item_name": "坝基下游",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 2302
+    },
+    {
+      "item_id": "tmpl_a2_found_cutoff",
+      "item_code": "A2_FOUND_CUTOFF",
+      "chapter_code": "A2",
+      "parent_code": "A2_FOUND",
+      "item_name": "坝基防渗体",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 2303
+    },
+    {
+      "item_id": "tmpl_a2_abut",
+      "item_code": "A2_ABUT",
+      "chapter_code": "A2",
+      "parent_code": "A2",
+      "item_name": "坝肩",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 2400
+    },
+    {
+      "item_id": "tmpl_a2_abut_left",
+      "item_code": "A2_ABUT_LEFT",
+      "chapter_code": "A2",
+      "parent_code": "A2_ABUT",
+      "item_name": "左坝肩",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 2401
+    },
+    {
+      "item_id": "tmpl_a2_abut_right",
+      "item_code": "A2_ABUT_RIGHT",
+      "chapter_code": "A2",
+      "parent_code": "A2_ABUT",
+      "item_name": "右坝肩",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 2402
+    },
+    {
+      "item_id": "tmpl_a2_down_ground",
+      "item_code": "A2_DOWN_GROUND",
+      "chapter_code": "A2",
+      "parent_code": "A2",
+      "item_name": "下游地面",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 2500
+    },
+    {
+      "item_id": "tmpl_a2_down_ground_ditch",
+      "item_code": "A2_DOWN_GROUND_DITCH",
+      "chapter_code": "A2",
+      "parent_code": "A2_DOWN_GROUND",
+      "item_name": "下游地面排水沟",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 2501
+    },
+    {
+      "item_id": "tmpl_a2_down_ground_channel",
+      "item_code": "A2_DOWN_GROUND_CHANNEL",
+      "chapter_code": "A2",
+      "parent_code": "A2_DOWN_GROUND",
+      "item_name": "下游地面排水渠",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 2502
+    },
+    {
+      "item_id": "tmpl_a2_nearbank",
+      "item_code": "A2_NEARBANK",
+      "chapter_code": "A2",
+      "parent_code": "A2",
+      "item_name": "近坝库岸",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 2600
+    },
+    {
+      "item_id": "tmpl_a2_nearbank_left",
+      "item_code": "A2_NEARBANK_LEFT",
+      "chapter_code": "A2",
+      "parent_code": "A2_NEARBANK",
+      "item_name": "左岸近坝库岸",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 2601
+    },
+    {
+      "item_id": "tmpl_a2_nearbank_right",
+      "item_code": "A2_NEARBANK_RIGHT",
+      "chapter_code": "A2",
+      "parent_code": "A2_NEARBANK",
+      "item_name": "右岸近坝库岸",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 2602
+    },
+    {
+      "item_id": "tmpl_a2_other_section",
+      "item_code": "A2_OTHER_SECTION",
+      "chapter_code": "A2",
+      "parent_code": "A2",
+      "item_name": "其他",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 2700
+    },
+    {
+      "item_id": "tmpl_a2_other",
+      "item_code": "A2_OTHER",
+      "chapter_code": "A2",
+      "parent_code": "A2_OTHER_SECTION",
+      "item_name": "其他",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 2701
+    },
+    {
+      "item_id": "tmpl_a3",
+      "item_code": "A3",
+      "chapter_code": "A3",
+      "parent_code": null,
+      "item_name": "挡水建筑物现场检查情况——混凝土坝与浆砌石坝",
+      "item_type": "chapter",
+      "applicable_dam_type": [
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 3000
+    },
+    {
+      "item_id": "tmpl_a3_crest",
+      "item_code": "A3_CREST",
+      "chapter_code": "A3",
+      "parent_code": "A3",
+      "item_name": "坝顶",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 3100
+    },
+    {
+      "item_id": "tmpl_a3_crest_road",
+      "item_code": "A3_CREST_ROAD",
+      "chapter_code": "A3",
+      "parent_code": "A3_CREST",
+      "item_name": "坝顶路面",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 3101
+    },
+    {
+      "item_id": "tmpl_a3_crest_drain",
+      "item_code": "A3_CREST_DRAIN",
+      "chapter_code": "A3",
+      "parent_code": "A3_CREST",
+      "item_name": "坝顶排水设施",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 3102
+    },
+    {
+      "item_id": "tmpl_a3_body",
+      "item_code": "A3_BODY",
+      "chapter_code": "A3",
+      "parent_code": "A3",
+      "item_name": "坝体",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 3200
+    },
+    {
+      "item_id": "tmpl_a3_body_concrete",
+      "item_code": "A3_BODY_CONCRETE",
+      "chapter_code": "A3",
+      "parent_code": "A3_BODY",
+      "item_name": "坝体混凝土（浆砌石）结构",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 3201
+    },
+    {
+      "item_id": "tmpl_a3_body_appearance",
+      "item_code": "A3_BODY_APPEARANCE",
+      "chapter_code": "A3",
+      "parent_code": "A3_BODY",
+      "item_name": "坝体表观",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 3202
+    },
+    {
+      "item_id": "tmpl_a3_body_up_face",
+      "item_code": "A3_BODY_UP_FACE",
+      "chapter_code": "A3",
+      "parent_code": "A3_BODY",
+      "item_name": "上游坝面",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 3203
+    },
+    {
+      "item_id": "tmpl_a3_body_down_face",
+      "item_code": "A3_BODY_DOWN_FACE",
+      "chapter_code": "A3",
+      "parent_code": "A3_BODY",
+      "item_name": "下游坝面",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 3204
+    },
+    {
+      "item_id": "tmpl_a3_body_drain",
+      "item_code": "A3_BODY_DRAIN",
+      "chapter_code": "A3",
+      "parent_code": "A3_BODY",
+      "item_name": "坝体排水设施",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 3205
+    },
+    {
+      "item_id": "tmpl_a3_body_gallery",
+      "item_code": "A3_BODY_GALLERY",
+      "chapter_code": "A3",
+      "parent_code": "A3_BODY",
+      "item_name": "坝体廊道",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 3206
+    },
+    {
+      "item_id": "tmpl_a3_found",
+      "item_code": "A3_FOUND",
+      "chapter_code": "A3",
+      "parent_code": "A3",
+      "item_name": "坝基",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 3300
+    },
+    {
+      "item_id": "tmpl_a3_found_up",
+      "item_code": "A3_FOUND_UP",
+      "chapter_code": "A3",
+      "parent_code": "A3_FOUND",
+      "item_name": "坝基上游",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 3301
+    },
+    {
+      "item_id": "tmpl_a3_found_down",
+      "item_code": "A3_FOUND_DOWN",
+      "chapter_code": "A3",
+      "parent_code": "A3_FOUND",
+      "item_name": "坝基下游",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 3302
+    },
+    {
+      "item_id": "tmpl_a3_found_curtain",
+      "item_code": "A3_FOUND_CURTAIN",
+      "chapter_code": "A3",
+      "parent_code": "A3_FOUND",
+      "item_name": "坝基帷幕",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 3303
+    },
+    {
+      "item_id": "tmpl_a3_found_drain",
+      "item_code": "A3_FOUND_DRAIN",
+      "chapter_code": "A3",
+      "parent_code": "A3_FOUND",
+      "item_name": "坝基排水设施",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 3304
+    },
+    {
+      "item_id": "tmpl_a3_abut",
+      "item_code": "A3_ABUT",
+      "chapter_code": "A3",
+      "parent_code": "A3",
+      "item_name": "坝肩",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 3400
+    },
+    {
+      "item_id": "tmpl_a3_abut_left",
+      "item_code": "A3_ABUT_LEFT",
+      "chapter_code": "A3",
+      "parent_code": "A3_ABUT",
+      "item_name": "左坝肩",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 3401
+    },
+    {
+      "item_id": "tmpl_a3_abut_right",
+      "item_code": "A3_ABUT_RIGHT",
+      "chapter_code": "A3",
+      "parent_code": "A3_ABUT",
+      "item_name": "右坝肩",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 3402
+    },
+    {
+      "item_id": "tmpl_a3_down_ground",
+      "item_code": "A3_DOWN_GROUND",
+      "chapter_code": "A3",
+      "parent_code": "A3",
+      "item_name": "下游地面",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 3500
+    },
+    {
+      "item_id": "tmpl_a3_down_ground_ditch",
+      "item_code": "A3_DOWN_GROUND_DITCH",
+      "chapter_code": "A3",
+      "parent_code": "A3_DOWN_GROUND",
+      "item_name": "下游地面排水沟",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 3501
+    },
+    {
+      "item_id": "tmpl_a3_down_ground_channel",
+      "item_code": "A3_DOWN_GROUND_CHANNEL",
+      "chapter_code": "A3",
+      "parent_code": "A3_DOWN_GROUND",
+      "item_name": "下游地面排水渠",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 3502
+    },
+    {
+      "item_id": "tmpl_a3_nearbank",
+      "item_code": "A3_NEARBANK",
+      "chapter_code": "A3",
+      "parent_code": "A3",
+      "item_name": "近坝库岸",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 3600
+    },
+    {
+      "item_id": "tmpl_a3_nearbank_left",
+      "item_code": "A3_NEARBANK_LEFT",
+      "chapter_code": "A3",
+      "parent_code": "A3_NEARBANK",
+      "item_name": "左岸近坝库岸",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 3601
+    },
+    {
+      "item_id": "tmpl_a3_nearbank_right",
+      "item_code": "A3_NEARBANK_RIGHT",
+      "chapter_code": "A3",
+      "parent_code": "A3_NEARBANK",
+      "item_name": "右岸近坝库岸",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 3602
+    },
+    {
+      "item_id": "tmpl_a3_other_section",
+      "item_code": "A3_OTHER_SECTION",
+      "chapter_code": "A3",
+      "parent_code": "A3",
+      "item_name": "其他",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 3700
+    },
+    {
+      "item_id": "tmpl_a3_other",
+      "item_code": "A3_OTHER",
+      "chapter_code": "A3",
+      "parent_code": "A3_OTHER_SECTION",
+      "item_name": "其他",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 3701
+    },
+    {
+      "item_id": "tmpl_a4",
+      "item_code": "A4",
+      "chapter_code": "A4",
+      "parent_code": null,
+      "item_name": "泄水建筑物现场检查情况——溢洪道",
+      "item_type": "chapter",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 4000
+    },
+    {
+      "item_id": "tmpl_a4_inlet",
+      "item_code": "A4_INLET",
+      "chapter_code": "A4",
+      "parent_code": "A4",
+      "item_name": "进口段",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 4100
+    },
+    {
+      "item_id": "tmpl_a4_inlet_left_wall",
+      "item_code": "A4_INLET_LEFT_WALL",
+      "chapter_code": "A4",
+      "parent_code": "A4_INLET",
+      "item_name": "进口左边墙",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 4101
+    },
+    {
+      "item_id": "tmpl_a4_inlet_right_wall",
+      "item_code": "A4_INLET_RIGHT_WALL",
+      "chapter_code": "A4",
+      "parent_code": "A4_INLET",
+      "item_name": "进口右边墙",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 4102
+    },
+    {
+      "item_id": "tmpl_a4_inlet_floor",
+      "item_code": "A4_INLET_FLOOR",
+      "chapter_code": "A4",
+      "parent_code": "A4_INLET",
+      "item_name": "进口底板",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 4103
+    },
+    {
+      "item_id": "tmpl_a4_ctrl",
+      "item_code": "A4_CTRL",
+      "chapter_code": "A4",
+      "parent_code": "A4",
+      "item_name": "控制段",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 4200
+    },
+    {
+      "item_id": "tmpl_a4_ctrl_left_wall",
+      "item_code": "A4_CTRL_LEFT_WALL",
+      "chapter_code": "A4",
+      "parent_code": "A4_CTRL",
+      "item_name": "控制段左边墙",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 4201
+    },
+    {
+      "item_id": "tmpl_a4_ctrl_right_wall",
+      "item_code": "A4_CTRL_RIGHT_WALL",
+      "chapter_code": "A4",
+      "parent_code": "A4_CTRL",
+      "item_name": "控制段右边墙",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 4202
+    },
+    {
+      "item_id": "tmpl_a4_ctrl_pier",
+      "item_code": "A4_CTRL_PIER",
+      "chapter_code": "A4",
+      "parent_code": "A4_CTRL",
+      "item_name": "控制段闸墩",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 4203
+    },
+    {
+      "item_id": "tmpl_a4_ctrl_corbel",
+      "item_code": "A4_CTRL_CORBEL",
+      "chapter_code": "A4",
+      "parent_code": "A4_CTRL",
+      "item_name": "控制段牛腿",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 4204
+    },
+    {
+      "item_id": "tmpl_a4_ctrl_floor",
+      "item_code": "A4_CTRL_FLOOR",
+      "chapter_code": "A4",
+      "parent_code": "A4_CTRL",
+      "item_name": "控制段底板",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 4205
+    },
+    {
+      "item_id": "tmpl_a4_ctrl_weir",
+      "item_code": "A4_CTRL_WEIR",
+      "chapter_code": "A4",
+      "parent_code": "A4_CTRL",
+      "item_name": "控制段堰体",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 4206
+    },
+    {
+      "item_id": "tmpl_a4_ctrl_trash_rack",
+      "item_code": "A4_CTRL_TRASH_RACK",
+      "chapter_code": "A4",
+      "parent_code": "A4_CTRL",
+      "item_name": "控制段拦污栅",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 4207
+    },
+    {
+      "item_id": "tmpl_a4_gate",
+      "item_code": "A4_GATE",
+      "chapter_code": "A4",
+      "parent_code": "A4",
+      "item_name": "闸门系统",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 4300
+    },
+    {
+      "item_id": "tmpl_a4_gate_maint",
+      "item_code": "A4_GATE_MAINT",
+      "chapter_code": "A4",
+      "parent_code": "A4_GATE",
+      "item_name": "检修闸门",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 4301
+    },
+    {
+      "item_id": "tmpl_a4_gate_maint_slot",
+      "item_code": "A4_GATE_MAINT_SLOT",
+      "chapter_code": "A4",
+      "parent_code": "A4_GATE",
+      "item_name": "检修闸门门槽",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 4302
+    },
+    {
+      "item_id": "tmpl_a4_gate_work",
+      "item_code": "A4_GATE_WORK",
+      "chapter_code": "A4",
+      "parent_code": "A4_GATE",
+      "item_name": "工作闸门",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 4303
+    },
+    {
+      "item_id": "tmpl_a4_gate_work_slot",
+      "item_code": "A4_GATE_WORK_SLOT",
+      "chapter_code": "A4",
+      "parent_code": "A4_GATE",
+      "item_name": "工作闸门门槽",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 4304
+    },
+    {
+      "item_id": "tmpl_a4_gate_vent",
+      "item_code": "A4_GATE_VENT",
+      "chapter_code": "A4",
+      "parent_code": "A4_GATE",
+      "item_name": "闸门通气孔",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 4305
+    },
+    {
+      "item_id": "tmpl_a4_hoist",
+      "item_code": "A4_HOIST",
+      "chapter_code": "A4",
+      "parent_code": "A4",
+      "item_name": "启闭系统",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 4400
+    },
+    {
+      "item_id": "tmpl_a4_hoist_house",
+      "item_code": "A4_HOIST_HOUSE",
+      "chapter_code": "A4",
+      "parent_code": "A4_HOIST",
+      "item_name": "启闭房（塔）",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 4401
+    },
+    {
+      "item_id": "tmpl_a4_hoist_machine",
+      "item_code": "A4_HOIST_MACHINE",
+      "chapter_code": "A4",
+      "parent_code": "A4_HOIST",
+      "item_name": "启闭机",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 4402
+    },
+    {
+      "item_id": "tmpl_a4_hoist_control",
+      "item_code": "A4_HOIST_CONTROL",
+      "chapter_code": "A4",
+      "parent_code": "A4_HOIST",
+      "item_name": "启闭控制系统",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 4403
+    },
+    {
+      "item_id": "tmpl_a4_hoist_power",
+      "item_code": "A4_HOIST_POWER",
+      "chapter_code": "A4",
+      "parent_code": "A4_HOIST",
+      "item_name": "启闭供电系统",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 4404
+    },
+    {
+      "item_id": "tmpl_a4_backup_power",
+      "item_code": "A4_BACKUP_POWER",
+      "chapter_code": "A4",
+      "parent_code": "A4_HOIST",
+      "item_name": "备用电源",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 4405
+    },
+    {
+      "item_id": "tmpl_a4_chute",
+      "item_code": "A4_CHUTE",
+      "chapter_code": "A4",
+      "parent_code": "A4",
+      "item_name": "泄槽",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 4500
+    },
+    {
+      "item_id": "tmpl_a4_chute_left_wall",
+      "item_code": "A4_CHUTE_LEFT_WALL",
+      "chapter_code": "A4",
+      "parent_code": "A4_CHUTE",
+      "item_name": "泄槽左边墙",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 4501
+    },
+    {
+      "item_id": "tmpl_a4_chute_right_wall",
+      "item_code": "A4_CHUTE_RIGHT_WALL",
+      "chapter_code": "A4",
+      "parent_code": "A4_CHUTE",
+      "item_name": "泄槽右边墙",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 4502
+    },
+    {
+      "item_id": "tmpl_a4_chute_floor",
+      "item_code": "A4_CHUTE_FLOOR",
+      "chapter_code": "A4",
+      "parent_code": "A4_CHUTE",
+      "item_name": "泄槽底板",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 4503
+    },
+    {
+      "item_id": "tmpl_a4_energy",
+      "item_code": "A4_ENERGY",
+      "chapter_code": "A4",
+      "parent_code": "A4",
+      "item_name": "消能段",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 4600
+    },
+    {
+      "item_id": "tmpl_a4_energy_bucket",
+      "item_code": "A4_ENERGY_BUCKET",
+      "chapter_code": "A4",
+      "parent_code": "A4_ENERGY",
+      "item_name": "挑流鼻坎",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 4601
+    },
+    {
+      "item_id": "tmpl_a4_energy_basin",
+      "item_code": "A4_ENERGY_BASIN",
+      "chapter_code": "A4",
+      "parent_code": "A4_ENERGY",
+      "item_name": "消力池",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 4602
+    },
+    {
+      "item_id": "tmpl_a4_energy_floor",
+      "item_code": "A4_ENERGY_FLOOR",
+      "chapter_code": "A4",
+      "parent_code": "A4_ENERGY",
+      "item_name": "消能段底板",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 4603
+    },
+    {
+      "item_id": "tmpl_a4_energy_drop",
+      "item_code": "A4_ENERGY_DROP",
+      "chapter_code": "A4",
+      "parent_code": "A4_ENERGY",
+      "item_name": "消能跌坎",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 4604
+    },
+    {
+      "item_id": "tmpl_a4_tail",
+      "item_code": "A4_TAIL",
+      "chapter_code": "A4",
+      "parent_code": "A4",
+      "item_name": "尾水",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 4700
+    },
+    {
+      "item_id": "tmpl_a4_tail_channel",
+      "item_code": "A4_TAIL_CHANNEL",
+      "chapter_code": "A4",
+      "parent_code": "A4_TAIL",
+      "item_name": "尾水渠道",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 4701
+    },
+    {
+      "item_id": "tmpl_a4_tail_river",
+      "item_code": "A4_TAIL_RIVER",
+      "chapter_code": "A4",
+      "parent_code": "A4_TAIL",
+      "item_name": "尾水河道",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 4702
+    },
+    {
+      "item_id": "tmpl_a4_traffic",
+      "item_code": "A4_TRAFFIC",
+      "chapter_code": "A4",
+      "parent_code": "A4",
+      "item_name": "交通桥",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 4800
+    },
+    {
+      "item_id": "tmpl_a4_traffic_work_bridge",
+      "item_code": "A4_TRAFFIC_WORK_BRIDGE",
+      "chapter_code": "A4",
+      "parent_code": "A4_TRAFFIC",
+      "item_name": "检修桥",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 4801
+    },
+    {
+      "item_id": "tmpl_a4_traffic_bridge",
+      "item_code": "A4_TRAFFIC_BRIDGE",
+      "chapter_code": "A4",
+      "parent_code": "A4_TRAFFIC",
+      "item_name": "交通桥",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 4802
+    },
+    {
+      "item_id": "tmpl_a4_slope",
+      "item_code": "A4_SLOPE",
+      "chapter_code": "A4",
+      "parent_code": "A4",
+      "item_name": "边坡",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 4900
+    },
+    {
+      "item_id": "tmpl_a4_slope_left",
+      "item_code": "A4_SLOPE_LEFT",
+      "chapter_code": "A4",
+      "parent_code": "A4_SLOPE",
+      "item_name": "左边坡",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 4901
+    },
+    {
+      "item_id": "tmpl_a4_slope_right",
+      "item_code": "A4_SLOPE_RIGHT",
+      "chapter_code": "A4",
+      "parent_code": "A4_SLOPE",
+      "item_name": "右边坡",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 4902
+    },
+    {
+      "item_id": "tmpl_a4_other_section",
+      "item_code": "A4_OTHER_SECTION",
+      "chapter_code": "A4",
+      "parent_code": "A4",
+      "item_name": "其他",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 5000
+    },
+    {
+      "item_id": "tmpl_a4_other",
+      "item_code": "A4_OTHER",
+      "chapter_code": "A4",
+      "parent_code": "A4_OTHER_SECTION",
+      "item_name": "其他",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 5001
+    },
+    {
+      "item_id": "tmpl_a5",
+      "item_code": "A5",
+      "chapter_code": "A5",
+      "parent_code": null,
+      "item_name": "泄水建筑物现场检查情况——溢（泄）洪隧洞",
+      "item_type": "chapter",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 5000
+    },
+    {
+      "item_id": "tmpl_a5_inlet",
+      "item_code": "A5_INLET",
+      "chapter_code": "A5",
+      "parent_code": "A5",
+      "item_name": "进口段",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 5100
+    },
+    {
+      "item_id": "tmpl_a5_inlet_left_wall",
+      "item_code": "A5_INLET_LEFT_WALL",
+      "chapter_code": "A5",
+      "parent_code": "A5_INLET",
+      "item_name": "进口左边墙",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 5101
+    },
+    {
+      "item_id": "tmpl_a5_inlet_right_wall",
+      "item_code": "A5_INLET_RIGHT_WALL",
+      "chapter_code": "A5",
+      "parent_code": "A5_INLET",
+      "item_name": "进口右边墙",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 5102
+    },
+    {
+      "item_id": "tmpl_a5_inlet_floor",
+      "item_code": "A5_INLET_FLOOR",
+      "chapter_code": "A5",
+      "parent_code": "A5_INLET",
+      "item_name": "进口底板",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 5103
+    },
+    {
+      "item_id": "tmpl_a5_tunnel",
+      "item_code": "A5_TUNNEL",
+      "chapter_code": "A5",
+      "parent_code": "A5",
+      "item_name": "隧洞段",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 5200
+    },
+    {
+      "item_id": "tmpl_a5_tunnel_gate_shaft",
+      "item_code": "A5_TUNNEL_GATE_SHAFT",
+      "chapter_code": "A5",
+      "parent_code": "A5_TUNNEL",
+      "item_name": "闸井",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 5201
+    },
+    {
+      "item_id": "tmpl_a5_tunnel_crown",
+      "item_code": "A5_TUNNEL_CROWN",
+      "chapter_code": "A5",
+      "parent_code": "A5_TUNNEL",
+      "item_name": "洞顶",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 5202
+    },
+    {
+      "item_id": "tmpl_a5_tunnel_sidewall",
+      "item_code": "A5_TUNNEL_SIDEWALL",
+      "chapter_code": "A5",
+      "parent_code": "A5_TUNNEL",
+      "item_name": "洞侧墙",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 5203
+    },
+    {
+      "item_id": "tmpl_a5_tunnel_floor",
+      "item_code": "A5_TUNNEL_FLOOR",
+      "chapter_code": "A5",
+      "parent_code": "A5_TUNNEL",
+      "item_name": "洞底板",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 5204
+    },
+    {
+      "item_id": "tmpl_a5_gate",
+      "item_code": "A5_GATE",
+      "chapter_code": "A5",
+      "parent_code": "A5",
+      "item_name": "闸门系统",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 5300
+    },
+    {
+      "item_id": "tmpl_a5_gate_trash_rack",
+      "item_code": "A5_GATE_TRASH_RACK",
+      "chapter_code": "A5",
+      "parent_code": "A5_GATE",
+      "item_name": "拦污栅",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 5301
+    },
+    {
+      "item_id": "tmpl_a5_gate_maint",
+      "item_code": "A5_GATE_MAINT",
+      "chapter_code": "A5",
+      "parent_code": "A5_GATE",
+      "item_name": "检修闸门",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 5302
+    },
+    {
+      "item_id": "tmpl_a5_gate_maint_slot",
+      "item_code": "A5_GATE_MAINT_SLOT",
+      "chapter_code": "A5",
+      "parent_code": "A5_GATE",
+      "item_name": "检修闸门门槽",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 5303
+    },
+    {
+      "item_id": "tmpl_a5_gate_work",
+      "item_code": "A5_GATE_WORK",
+      "chapter_code": "A5",
+      "parent_code": "A5_GATE",
+      "item_name": "工作闸门",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 5304
+    },
+    {
+      "item_id": "tmpl_a5_gate_work_slot",
+      "item_code": "A5_GATE_WORK_SLOT",
+      "chapter_code": "A5",
+      "parent_code": "A5_GATE",
+      "item_name": "工作闸门门槽",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 5305
+    },
+    {
+      "item_id": "tmpl_a5_gate_vent",
+      "item_code": "A5_GATE_VENT",
+      "chapter_code": "A5",
+      "parent_code": "A5_GATE",
+      "item_name": "闸门通气孔",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 5306
+    },
+    {
+      "item_id": "tmpl_a5_hoist",
+      "item_code": "A5_HOIST",
+      "chapter_code": "A5",
+      "parent_code": "A5",
+      "item_name": "启闭系统",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 5400
+    },
+    {
+      "item_id": "tmpl_a5_hoist_house",
+      "item_code": "A5_HOIST_HOUSE",
+      "chapter_code": "A5",
+      "parent_code": "A5_HOIST",
+      "item_name": "启闭房（塔）",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 5401
+    },
+    {
+      "item_id": "tmpl_a5_hoist_machine",
+      "item_code": "A5_HOIST_MACHINE",
+      "chapter_code": "A5",
+      "parent_code": "A5_HOIST",
+      "item_name": "启闭机",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 5402
+    },
+    {
+      "item_id": "tmpl_a5_hoist_power",
+      "item_code": "A5_HOIST_POWER",
+      "chapter_code": "A5",
+      "parent_code": "A5_HOIST",
+      "item_name": "启闭供电系统",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 5403
+    },
+    {
+      "item_id": "tmpl_a5_backup_power",
+      "item_code": "A5_BACKUP_POWER",
+      "chapter_code": "A5",
+      "parent_code": "A5_HOIST",
+      "item_name": "备用电源",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 5404
+    },
+    {
+      "item_id": "tmpl_a5_outlet",
+      "item_code": "A5_OUTLET",
+      "chapter_code": "A5",
+      "parent_code": "A5",
+      "item_name": "出口段",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 5500
+    },
+    {
+      "item_id": "tmpl_a5_outlet_left_wall",
+      "item_code": "A5_OUTLET_LEFT_WALL",
+      "chapter_code": "A5",
+      "parent_code": "A5_OUTLET",
+      "item_name": "出口左边墙",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 5501
+    },
+    {
+      "item_id": "tmpl_a5_outlet_right_wall",
+      "item_code": "A5_OUTLET_RIGHT_WALL",
+      "chapter_code": "A5",
+      "parent_code": "A5_OUTLET",
+      "item_name": "出口右边墙",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 5502
+    },
+    {
+      "item_id": "tmpl_a5_outlet_floor",
+      "item_code": "A5_OUTLET_FLOOR",
+      "chapter_code": "A5",
+      "parent_code": "A5_OUTLET",
+      "item_name": "出口底板",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 5503
+    },
+    {
+      "item_id": "tmpl_a5_outlet_energy",
+      "item_code": "A5_OUTLET_ENERGY",
+      "chapter_code": "A5",
+      "parent_code": "A5_OUTLET",
+      "item_name": "出口消能设施",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 5504
+    },
+    {
+      "item_id": "tmpl_a5_tail",
+      "item_code": "A5_TAIL",
+      "chapter_code": "A5",
+      "parent_code": "A5",
+      "item_name": "尾水",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 5600
+    },
+    {
+      "item_id": "tmpl_a5_tail_channel",
+      "item_code": "A5_TAIL_CHANNEL",
+      "chapter_code": "A5",
+      "parent_code": "A5_TAIL",
+      "item_name": "尾水渠道",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 5601
+    },
+    {
+      "item_id": "tmpl_a5_tail_river",
+      "item_code": "A5_TAIL_RIVER",
+      "chapter_code": "A5",
+      "parent_code": "A5_TAIL",
+      "item_name": "尾水河道",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 5602
+    },
+    {
+      "item_id": "tmpl_a5_other_section",
+      "item_code": "A5_OTHER_SECTION",
+      "chapter_code": "A5",
+      "parent_code": "A5",
+      "item_name": "其他",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 5700
+    },
+    {
+      "item_id": "tmpl_a5_other",
+      "item_code": "A5_OTHER",
+      "chapter_code": "A5",
+      "parent_code": "A5_OTHER_SECTION",
+      "item_name": "其他",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 5701
+    },
+    {
+      "item_id": "tmpl_a6",
+      "item_code": "A6",
+      "chapter_code": "A6",
+      "parent_code": null,
+      "item_name": "输（引）水建筑物现场检查情况",
+      "item_type": "chapter",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 6000
+    },
+    {
+      "item_id": "tmpl_a6_inlet",
+      "item_code": "A6_INLET",
+      "chapter_code": "A6",
+      "parent_code": "A6",
+      "item_name": "进口段",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 6100
+    },
+    {
+      "item_id": "tmpl_a6_inlet_left_wall",
+      "item_code": "A6_INLET_LEFT_WALL",
+      "chapter_code": "A6",
+      "parent_code": "A6_INLET",
+      "item_name": "进口左边墙",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 6101
+    },
+    {
+      "item_id": "tmpl_a6_inlet_right_wall",
+      "item_code": "A6_INLET_RIGHT_WALL",
+      "chapter_code": "A6",
+      "parent_code": "A6_INLET",
+      "item_name": "进口右边墙",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 6102
+    },
+    {
+      "item_id": "tmpl_a6_inlet_floor",
+      "item_code": "A6_INLET_FLOOR",
+      "chapter_code": "A6",
+      "parent_code": "A6_INLET",
+      "item_name": "进口底板",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 6103
+    },
+    {
+      "item_id": "tmpl_a6_tunnel",
+      "item_code": "A6_TUNNEL",
+      "chapter_code": "A6",
+      "parent_code": "A6",
+      "item_name": "洞身",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 6200
+    },
+    {
+      "item_id": "tmpl_a6_tunnel_gate_shaft",
+      "item_code": "A6_TUNNEL_GATE_SHAFT",
+      "chapter_code": "A6",
+      "parent_code": "A6_TUNNEL",
+      "item_name": "闸井",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 6201
+    },
+    {
+      "item_id": "tmpl_a6_tunnel_crown",
+      "item_code": "A6_TUNNEL_CROWN",
+      "chapter_code": "A6",
+      "parent_code": "A6_TUNNEL",
+      "item_name": "洞顶",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 6202
+    },
+    {
+      "item_id": "tmpl_a6_tunnel_sidewall",
+      "item_code": "A6_TUNNEL_SIDEWALL",
+      "chapter_code": "A6",
+      "parent_code": "A6_TUNNEL",
+      "item_name": "洞侧墙",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 6203
+    },
+    {
+      "item_id": "tmpl_a6_tunnel_floor",
+      "item_code": "A6_TUNNEL_FLOOR",
+      "chapter_code": "A6",
+      "parent_code": "A6_TUNNEL",
+      "item_name": "洞底板",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 6204
+    },
+    {
+      "item_id": "tmpl_a6_gate",
+      "item_code": "A6_GATE",
+      "chapter_code": "A6",
+      "parent_code": "A6",
+      "item_name": "闸门系统",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 6300
+    },
+    {
+      "item_id": "tmpl_a6_gate_trash_rack",
+      "item_code": "A6_GATE_TRASH_RACK",
+      "chapter_code": "A6",
+      "parent_code": "A6_GATE",
+      "item_name": "拦污栅",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 6301
+    },
+    {
+      "item_id": "tmpl_a6_gate_maint",
+      "item_code": "A6_GATE_MAINT",
+      "chapter_code": "A6",
+      "parent_code": "A6_GATE",
+      "item_name": "检修闸门",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 6302
+    },
+    {
+      "item_id": "tmpl_a6_gate_maint_slot",
+      "item_code": "A6_GATE_MAINT_SLOT",
+      "chapter_code": "A6",
+      "parent_code": "A6_GATE",
+      "item_name": "检修闸门门槽",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 6303
+    },
+    {
+      "item_id": "tmpl_a6_gate_work",
+      "item_code": "A6_GATE_WORK",
+      "chapter_code": "A6",
+      "parent_code": "A6_GATE",
+      "item_name": "工作闸门",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 6304
+    },
+    {
+      "item_id": "tmpl_a6_gate_work_slot",
+      "item_code": "A6_GATE_WORK_SLOT",
+      "chapter_code": "A6",
+      "parent_code": "A6_GATE",
+      "item_name": "工作闸门门槽",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 6305
+    },
+    {
+      "item_id": "tmpl_a6_gate_vent",
+      "item_code": "A6_GATE_VENT",
+      "chapter_code": "A6",
+      "parent_code": "A6_GATE",
+      "item_name": "闸门通气孔",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 6306
+    },
+    {
+      "item_id": "tmpl_a6_hoist",
+      "item_code": "A6_HOIST",
+      "chapter_code": "A6",
+      "parent_code": "A6",
+      "item_name": "启闭系统",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 6400
+    },
+    {
+      "item_id": "tmpl_a6_hoist_house",
+      "item_code": "A6_HOIST_HOUSE",
+      "chapter_code": "A6",
+      "parent_code": "A6_HOIST",
+      "item_name": "启闭房（塔）",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 6401
+    },
+    {
+      "item_id": "tmpl_a6_hoist_machine",
+      "item_code": "A6_HOIST_MACHINE",
+      "chapter_code": "A6",
+      "parent_code": "A6_HOIST",
+      "item_name": "启闭机",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 6402
+    },
+    {
+      "item_id": "tmpl_a6_hoist_power",
+      "item_code": "A6_HOIST_POWER",
+      "chapter_code": "A6",
+      "parent_code": "A6_HOIST",
+      "item_name": "启闭供电系统",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 6403
+    },
+    {
+      "item_id": "tmpl_a6_backup_power",
+      "item_code": "A6_BACKUP_POWER",
+      "chapter_code": "A6",
+      "parent_code": "A6_HOIST",
+      "item_name": "备用电源",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 6404
+    },
+    {
+      "item_id": "tmpl_a6_outlet",
+      "item_code": "A6_OUTLET",
+      "chapter_code": "A6",
+      "parent_code": "A6",
+      "item_name": "出口段",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 6500
+    },
+    {
+      "item_id": "tmpl_a6_outlet_left_wall",
+      "item_code": "A6_OUTLET_LEFT_WALL",
+      "chapter_code": "A6",
+      "parent_code": "A6_OUTLET",
+      "item_name": "出口左边墙",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 6501
+    },
+    {
+      "item_id": "tmpl_a6_outlet_right_wall",
+      "item_code": "A6_OUTLET_RIGHT_WALL",
+      "chapter_code": "A6",
+      "parent_code": "A6_OUTLET",
+      "item_name": "出口右边墙",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 6502
+    },
+    {
+      "item_id": "tmpl_a6_outlet_floor",
+      "item_code": "A6_OUTLET_FLOOR",
+      "chapter_code": "A6",
+      "parent_code": "A6_OUTLET",
+      "item_name": "出口底板",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 6503
+    },
+    {
+      "item_id": "tmpl_a6_outlet_energy",
+      "item_code": "A6_OUTLET_ENERGY",
+      "chapter_code": "A6",
+      "parent_code": "A6_OUTLET",
+      "item_name": "出口消能设施",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 6504
+    },
+    {
+      "item_id": "tmpl_a6_tail",
+      "item_code": "A6_TAIL",
+      "chapter_code": "A6",
+      "parent_code": "A6",
+      "item_name": "尾水",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 6600
+    },
+    {
+      "item_id": "tmpl_a6_tail_channel",
+      "item_code": "A6_TAIL_CHANNEL",
+      "chapter_code": "A6",
+      "parent_code": "A6_TAIL",
+      "item_name": "尾水渠道",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 6601
+    },
+    {
+      "item_id": "tmpl_a6_tail_river",
+      "item_code": "A6_TAIL_RIVER",
+      "chapter_code": "A6",
+      "parent_code": "A6_TAIL",
+      "item_name": "尾水河道",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 6602
+    },
+    {
+      "item_id": "tmpl_a6_other_section",
+      "item_code": "A6_OTHER_SECTION",
+      "chapter_code": "A6",
+      "parent_code": "A6",
+      "item_name": "其他",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 6700
+    },
+    {
+      "item_id": "tmpl_a6_other",
+      "item_code": "A6_OTHER",
+      "chapter_code": "A6",
+      "parent_code": "A6_OTHER_SECTION",
+      "item_name": "其他",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 6701
+    },
+    {
+      "item_id": "tmpl_a7",
+      "item_code": "A7",
+      "chapter_code": "A7",
+      "parent_code": null,
+      "item_name": "管理设施现场检查情况",
+      "item_type": "chapter",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 7000
+    },
+    {
+      "item_id": "tmpl_a7_org",
+      "item_code": "A7_ORG",
+      "chapter_code": "A7",
+      "parent_code": "A7",
+      "item_name": "组织机构",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 7100
+    },
+    {
+      "item_id": "tmpl_a7_org_structure",
+      "item_code": "A7_ORG_STRUCTURE",
+      "chapter_code": "A7",
+      "parent_code": "A7_ORG",
+      "item_name": "组织机构",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 7101
+    },
+    {
+      "item_id": "tmpl_a7_org_department",
+      "item_code": "A7_ORG_DEPARTMENT",
+      "chapter_code": "A7",
+      "parent_code": "A7_ORG",
+      "item_name": "部门设置",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 7102
+    },
+    {
+      "item_id": "tmpl_a7_team",
+      "item_code": "A7_TEAM",
+      "chapter_code": "A7",
+      "parent_code": "A7",
+      "item_name": "队伍建设",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 7200
+    },
+    {
+      "item_id": "tmpl_a7_team_admin",
+      "item_code": "A7_TEAM_ADMIN",
+      "chapter_code": "A7",
+      "parent_code": "A7_TEAM",
+      "item_name": "管理队伍",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 7201
+    },
+    {
+      "item_id": "tmpl_a7_team_tech",
+      "item_code": "A7_TEAM_TECH",
+      "chapter_code": "A7",
+      "parent_code": "A7_TEAM",
+      "item_name": "技术队伍配置",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 7202
+    },
+    {
+      "item_id": "tmpl_a7_system",
+      "item_code": "A7_SYSTEM",
+      "chapter_code": "A7",
+      "parent_code": "A7",
+      "item_name": "制度体系",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 7300
+    },
+    {
+      "item_id": "tmpl_a7_system_type",
+      "item_code": "A7_SYSTEM_TYPE",
+      "chapter_code": "A7",
+      "parent_code": "A7_SYSTEM",
+      "item_name": "管理制度",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 7301
+    },
+    {
+      "item_id": "tmpl_a7_system_execution",
+      "item_code": "A7_SYSTEM_EXECUTION",
+      "chapter_code": "A7",
+      "parent_code": "A7_SYSTEM",
+      "item_name": "制度执行情况",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 7302
+    },
+    {
+      "item_id": "tmpl_a7_office",
+      "item_code": "A7_OFFICE",
+      "chapter_code": "A7",
+      "parent_code": "A7",
+      "item_name": "办公条件",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 7400
+    },
+    {
+      "item_id": "tmpl_a7_office_area",
+      "item_code": "A7_OFFICE_AREA",
+      "chapter_code": "A7",
+      "parent_code": "A7_OFFICE",
+      "item_name": "办公场所",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 7401
+    },
+    {
+      "item_id": "tmpl_a7_office_safety",
+      "item_code": "A7_OFFICE_SAFETY",
+      "chapter_code": "A7",
+      "parent_code": "A7_OFFICE",
+      "item_name": "办公安全条件",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 7402
+    },
+    {
+      "item_id": "tmpl_a7_equip",
+      "item_code": "A7_EQUIP",
+      "chapter_code": "A7",
+      "parent_code": "A7",
+      "item_name": "设备设施",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 7500
+    },
+    {
+      "item_id": "tmpl_a7_equip_computer",
+      "item_code": "A7_EQUIP_COMPUTER",
+      "chapter_code": "A7",
+      "parent_code": "A7_EQUIP",
+      "item_name": "计算机设备",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 7501
+    },
+    {
+      "item_id": "tmpl_a7_equip_printer",
+      "item_code": "A7_EQUIP_PRINTER",
+      "chapter_code": "A7",
+      "parent_code": "A7_EQUIP",
+      "item_name": "打印设备",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 7502
+    },
+    {
+      "item_id": "tmpl_a7_equip_monitor",
+      "item_code": "A7_EQUIP_MONITOR",
+      "chapter_code": "A7",
+      "parent_code": "A7_EQUIP",
+      "item_name": "监测终端设备",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 7503
+    },
+    {
+      "item_id": "tmpl_a7_equip_furniture",
+      "item_code": "A7_EQUIP_FURNITURE",
+      "chapter_code": "A7",
+      "parent_code": "A7_EQUIP",
+      "item_name": "办公家具",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 7504
+    },
+    {
+      "item_id": "tmpl_a7_hydro",
+      "item_code": "A7_HYDRO",
+      "chapter_code": "A7",
+      "parent_code": "A7",
+      "item_name": "水雨情测报",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 7600
+    },
+    {
+      "item_id": "tmpl_a7_hydro_water",
+      "item_code": "A7_HYDRO_WATER",
+      "chapter_code": "A7",
+      "parent_code": "A7_HYDRO",
+      "item_name": "水位测报设施",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 7601
+    },
+    {
+      "item_id": "tmpl_a7_hydro_rain",
+      "item_code": "A7_HYDRO_RAIN",
+      "chapter_code": "A7",
+      "parent_code": "A7_HYDRO",
+      "item_name": "雨量测报设施",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 7602
+    },
+    {
+      "item_id": "tmpl_a7_monitor",
+      "item_code": "A7_MONITOR",
+      "chapter_code": "A7",
+      "parent_code": "A7",
+      "item_name": "安全监测",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 7700
+    },
+    {
+      "item_id": "tmpl_a7_monitor_deform",
+      "item_code": "A7_MONITOR_DEFORM",
+      "chapter_code": "A7",
+      "parent_code": "A7_MONITOR",
+      "item_name": "变形监测设施",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 7701
+    },
+    {
+      "item_id": "tmpl_a7_monitor_seepage",
+      "item_code": "A7_MONITOR_SEEPAGE",
+      "chapter_code": "A7",
+      "parent_code": "A7_MONITOR",
+      "item_name": "渗流监测设施",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 7702
+    },
+    {
+      "item_id": "tmpl_a7_monitor_stress",
+      "item_code": "A7_MONITOR_STRESS",
+      "chapter_code": "A7",
+      "parent_code": "A7_MONITOR",
+      "item_name": "应力应变监测设施",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 7703
+    },
+    {
+      "item_id": "tmpl_a7_monitor_temp",
+      "item_code": "A7_MONITOR_TEMP",
+      "chapter_code": "A7",
+      "parent_code": "A7_MONITOR",
+      "item_name": "温度监测设施",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 7704
+    },
+    {
+      "item_id": "tmpl_a7_monitor_quake",
+      "item_code": "A7_MONITOR_QUAKE",
+      "chapter_code": "A7",
+      "parent_code": "A7_MONITOR",
+      "item_name": "地震监测设施",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 7705
+    },
+    {
+      "item_id": "tmpl_a7_monitor_env",
+      "item_code": "A7_MONITOR_ENV",
+      "chapter_code": "A7",
+      "parent_code": "A7_MONITOR",
+      "item_name": "环境监测设施",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 7706
+    },
+    {
+      "item_id": "tmpl_a7_monitor_other",
+      "item_code": "A7_MONITOR_OTHER",
+      "chapter_code": "A7",
+      "parent_code": "A7_MONITOR",
+      "item_name": "其他监测设施",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 7707
+    },
+    {
+      "item_id": "tmpl_a7_monitor_data",
+      "item_code": "A7_MONITOR_DATA",
+      "chapter_code": "A7",
+      "parent_code": "A7_MONITOR",
+      "item_name": "监测资料整编",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 7708
+    },
+    {
+      "item_id": "tmpl_a7_road",
+      "item_code": "A7_ROAD",
+      "chapter_code": "A7",
+      "parent_code": "A7",
+      "item_name": "交通保障",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 7800
+    },
+    {
+      "item_id": "tmpl_a7_road_flood_access",
+      "item_code": "A7_ROAD_FLOOD_ACCESS",
+      "chapter_code": "A7",
+      "parent_code": "A7_ROAD",
+      "item_name": "防汛抢险道路",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 7801
+    },
+    {
+      "item_id": "tmpl_a7_road_external",
+      "item_code": "A7_ROAD_EXTERNAL",
+      "chapter_code": "A7",
+      "parent_code": "A7_ROAD",
+      "item_name": "对外交通道路",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 7802
+    },
+    {
+      "item_id": "tmpl_a7_vehicle",
+      "item_code": "A7_VEHICLE",
+      "chapter_code": "A7",
+      "parent_code": "A7",
+      "item_name": "车辆设备",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 7900
+    },
+    {
+      "item_id": "tmpl_a7_vehicle_office",
+      "item_code": "A7_VEHICLE_OFFICE",
+      "chapter_code": "A7",
+      "parent_code": "A7_VEHICLE",
+      "item_name": "办公车辆",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 7901
+    },
+    {
+      "item_id": "tmpl_a7_vehicle_flood",
+      "item_code": "A7_VEHICLE_FLOOD",
+      "chapter_code": "A7",
+      "parent_code": "A7_VEHICLE",
+      "item_name": "防汛抢险车辆",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 7902
+    },
+    {
+      "item_id": "tmpl_a7_vehicle_boat",
+      "item_code": "A7_VEHICLE_BOAT",
+      "chapter_code": "A7",
+      "parent_code": "A7_VEHICLE",
+      "item_name": "抢险船只",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 7903
+    },
+    {
+      "item_id": "tmpl_a7_material",
+      "item_code": "A7_MATERIAL",
+      "chapter_code": "A7",
+      "parent_code": "A7",
+      "item_name": "防汛物资",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 8000
+    },
+    {
+      "item_id": "tmpl_a7_material_soil",
+      "item_code": "A7_MATERIAL_SOIL",
+      "chapter_code": "A7",
+      "parent_code": "A7_MATERIAL",
+      "item_name": "土料",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 8001
+    },
+    {
+      "item_id": "tmpl_a7_material_wood",
+      "item_code": "A7_MATERIAL_WOOD",
+      "chapter_code": "A7",
+      "parent_code": "A7_MATERIAL",
+      "item_name": "木材",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 8002
+    },
+    {
+      "item_id": "tmpl_a7_material_steel",
+      "item_code": "A7_MATERIAL_STEEL",
+      "chapter_code": "A7",
+      "parent_code": "A7_MATERIAL",
+      "item_name": "钢材",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 8003
+    },
+    {
+      "item_id": "tmpl_a7_material_bag",
+      "item_code": "A7_MATERIAL_BAG",
+      "chapter_code": "A7",
+      "parent_code": "A7_MATERIAL",
+      "item_name": "编织袋",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 8004
+    },
+    {
+      "item_id": "tmpl_a7_material_light",
+      "item_code": "A7_MATERIAL_LIGHT",
+      "chapter_code": "A7",
+      "parent_code": "A7_MATERIAL",
+      "item_name": "照明设备",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 8005
+    },
+    {
+      "item_id": "tmpl_a7_material_other",
+      "item_code": "A7_MATERIAL_OTHER",
+      "chapter_code": "A7",
+      "parent_code": "A7_MATERIAL",
+      "item_name": "其他防汛物资",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 8006
+    },
+    {
+      "item_id": "tmpl_a7_comm",
+      "item_code": "A7_COMM",
+      "chapter_code": "A7",
+      "parent_code": "A7",
+      "item_name": "通信预警",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 8100
+    },
+    {
+      "item_id": "tmpl_a7_comm_phone",
+      "item_code": "A7_COMM_PHONE",
+      "chapter_code": "A7",
+      "parent_code": "A7_COMM",
+      "item_name": "固定电话",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 8101
+    },
+    {
+      "item_id": "tmpl_a7_comm_sat",
+      "item_code": "A7_COMM_SAT",
+      "chapter_code": "A7",
+      "parent_code": "A7_COMM",
+      "item_name": "卫星电话",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 8102
+    },
+    {
+      "item_id": "tmpl_a7_comm_radio",
+      "item_code": "A7_COMM_RADIO",
+      "chapter_code": "A7",
+      "parent_code": "A7_COMM",
+      "item_name": "对讲机",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 8103
+    },
+    {
+      "item_id": "tmpl_a7_comm_mobile",
+      "item_code": "A7_COMM_MOBILE",
+      "chapter_code": "A7",
+      "parent_code": "A7_COMM",
+      "item_name": "移动通信",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 8104
+    },
+    {
+      "item_id": "tmpl_a7_alarm",
+      "item_code": "A7_ALARM",
+      "chapter_code": "A7",
+      "parent_code": "A7",
+      "item_name": "报警设施",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 8200
+    },
+    {
+      "item_id": "tmpl_a7_alarm_up",
+      "item_code": "A7_ALARM_UP",
+      "chapter_code": "A7",
+      "parent_code": "A7_ALARM",
+      "item_name": "上游预警设施",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 8201
+    },
+    {
+      "item_id": "tmpl_a7_alarm_hub",
+      "item_code": "A7_ALARM_HUB",
+      "chapter_code": "A7",
+      "parent_code": "A7_ALARM",
+      "item_name": "枢纽区预警设施",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 8202
+    },
+    {
+      "item_id": "tmpl_a7_alarm_down",
+      "item_code": "A7_ALARM_DOWN",
+      "chapter_code": "A7",
+      "parent_code": "A7_ALARM",
+      "item_name": "下游预警设施",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 8203
+    },
+    {
+      "item_id": "tmpl_a7_power",
+      "item_code": "A7_POWER",
+      "chapter_code": "A7",
+      "parent_code": "A7",
+      "item_name": "供电照明",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 8300
+    },
+    {
+      "item_id": "tmpl_a7_power_hub",
+      "item_code": "A7_POWER_HUB",
+      "chapter_code": "A7",
+      "parent_code": "A7_POWER",
+      "item_name": "枢纽区供电设施",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 8301
+    },
+    {
+      "item_id": "tmpl_a7_light_hub",
+      "item_code": "A7_LIGHT_HUB",
+      "chapter_code": "A7",
+      "parent_code": "A7_POWER",
+      "item_name": "枢纽区照明设施",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 8302
+    },
+    {
+      "item_id": "tmpl_a7_maint",
+      "item_code": "A7_MAINT",
+      "chapter_code": "A7",
+      "parent_code": "A7",
+      "item_name": "检维修",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 8400
+    },
+    {
+      "item_id": "tmpl_a7_maint_machine",
+      "item_code": "A7_MAINT_MACHINE",
+      "chapter_code": "A7",
+      "parent_code": "A7_MAINT",
+      "item_name": "检维修机械设备",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 8401
+    },
+    {
+      "item_id": "tmpl_a7_maint_material",
+      "item_code": "A7_MAINT_MATERIAL",
+      "chapter_code": "A7",
+      "parent_code": "A7_MAINT",
+      "item_name": "检维修材料",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 8402
+    },
+    {
+      "item_id": "tmpl_a7_dispatch",
+      "item_code": "A7_DISPATCH",
+      "chapter_code": "A7",
+      "parent_code": "A7",
+      "item_name": "调度运行",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 8500
+    },
+    {
+      "item_id": "tmpl_a7_dispatch_content",
+      "item_code": "A7_DISPATCH_CONTENT",
+      "chapter_code": "A7",
+      "parent_code": "A7_DISPATCH",
+      "item_name": "调度规程内容",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 8501
+    },
+    {
+      "item_id": "tmpl_a7_dispatch_training",
+      "item_code": "A7_DISPATCH_TRAINING",
+      "chapter_code": "A7",
+      "parent_code": "A7_DISPATCH",
+      "item_name": "调度培训与演练",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 8502
+    },
+    {
+      "item_id": "tmpl_a7_emergency",
+      "item_code": "A7_EMERGENCY",
+      "chapter_code": "A7",
+      "parent_code": "A7",
+      "item_name": "应急管理",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 8600
+    },
+    {
+      "item_id": "tmpl_a7_emergency_content",
+      "item_code": "A7_EMERGENCY_CONTENT",
+      "chapter_code": "A7",
+      "parent_code": "A7_EMERGENCY",
+      "item_name": "应急预案内容",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 8601
+    },
+    {
+      "item_id": "tmpl_a7_emergency_risk_map",
+      "item_code": "A7_EMERGENCY_RISK_MAP",
+      "chapter_code": "A7",
+      "parent_code": "A7_EMERGENCY",
+      "item_name": "风险图编制",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 8602
+    },
+    {
+      "item_id": "tmpl_a7_emergency_validity",
+      "item_code": "A7_EMERGENCY_VALIDITY",
+      "chapter_code": "A7",
+      "parent_code": "A7_EMERGENCY",
+      "item_name": "预案有效性",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 8603
+    },
+    {
+      "item_id": "tmpl_a7_emergency_drill",
+      "item_code": "A7_EMERGENCY_DRILL",
+      "chapter_code": "A7",
+      "parent_code": "A7_EMERGENCY",
+      "item_name": "应急演练",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 8604
+    },
+    {
+      "item_id": "tmpl_a7_oms",
+      "item_code": "A7_OMS",
+      "chapter_code": "A7",
+      "parent_code": "A7",
+      "item_name": "OMS 管理",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 8700
+    },
+    {
+      "item_id": "tmpl_a7_oms_content",
+      "item_code": "A7_OMS_CONTENT",
+      "chapter_code": "A7",
+      "parent_code": "A7_OMS",
+      "item_name": "OMS内容",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 8701
+    },
+    {
+      "item_id": "tmpl_a7_oms_training",
+      "item_code": "A7_OMS_TRAINING",
+      "chapter_code": "A7",
+      "parent_code": "A7_OMS",
+      "item_name": "OMS培训",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 8702
+    },
+    {
+      "item_id": "tmpl_a7_other_section",
+      "item_code": "A7_OTHER_SECTION",
+      "chapter_code": "A7",
+      "parent_code": "A7",
+      "item_name": "其他",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 8800
+    },
+    {
+      "item_id": "tmpl_a7_other",
+      "item_code": "A7_OTHER",
+      "chapter_code": "A7",
+      "parent_code": "A7_OTHER_SECTION",
+      "item_name": "其他管理设施",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": true,
+      "sort_order": 8801
+    },
+    {
+      "item_id": "tmpl_a8",
+      "item_code": "A8",
+      "chapter_code": "A8",
+      "parent_code": null,
+      "item_name": "水库上下游现场检查情况",
+      "item_type": "chapter",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 8000
+    },
+    {
+      "item_id": "tmpl_a8_up",
+      "item_code": "A8_UP",
+      "chapter_code": "A8",
+      "parent_code": "A8",
+      "item_name": "上游影响",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 8100
+    },
+    {
+      "item_id": "tmpl_a8_up_reservoir",
+      "item_code": "A8_UP_RESERVOIR",
+      "chapter_code": "A8",
+      "parent_code": "A8_UP",
+      "item_name": "上游水库",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 8101
+    },
+    {
+      "item_id": "tmpl_a8_up_hydro",
+      "item_code": "A8_UP_HYDRO",
+      "chapter_code": "A8",
+      "parent_code": "A8_UP",
+      "item_name": "上游水电站",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 8102
+    },
+    {
+      "item_id": "tmpl_a8_up_gate",
+      "item_code": "A8_UP_GATE",
+      "chapter_code": "A8",
+      "parent_code": "A8_UP",
+      "item_name": "上游闸坝",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 8103
+    },
+    {
+      "item_id": "tmpl_a8_up_pump",
+      "item_code": "A8_UP_PUMP",
+      "chapter_code": "A8",
+      "parent_code": "A8_UP",
+      "item_name": "上游泵站",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 8104
+    },
+    {
+      "item_id": "tmpl_a8_up_pond",
+      "item_code": "A8_UP_POND",
+      "chapter_code": "A8",
+      "parent_code": "A8_UP",
+      "item_name": "上游山塘",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 8105
+    },
+    {
+      "item_id": "tmpl_a8_up_beach_dam",
+      "item_code": "A8_UP_BEACH_DAM",
+      "chapter_code": "A8",
+      "parent_code": "A8_UP",
+      "item_name": "上游塘坝",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 8106
+    },
+    {
+      "item_id": "tmpl_a8_area",
+      "item_code": "A8_AREA",
+      "chapter_code": "A8",
+      "parent_code": "A8",
+      "item_name": "库区及近坝区",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 8200
+    },
+    {
+      "item_id": "tmpl_a8_area_seepage",
+      "item_code": "A8_AREA_SEEPAGE",
+      "chapter_code": "A8",
+      "parent_code": "A8_AREA",
+      "item_name": "库区渗漏",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 8201
+    },
+    {
+      "item_id": "tmpl_a8_area_groundwater",
+      "item_code": "A8_AREA_GROUNDWATER",
+      "chapter_code": "A8",
+      "parent_code": "A8_AREA",
+      "item_name": "库区地下水异常",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 8202
+    },
+    {
+      "item_id": "tmpl_a8_area_road",
+      "item_code": "A8_AREA_ROAD",
+      "chapter_code": "A8",
+      "parent_code": "A8_AREA",
+      "item_name": "库区道路条件",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 8203
+    },
+    {
+      "item_id": "tmpl_a8_area_nearbank_slope",
+      "item_code": "A8_AREA_NEARBANK_SLOPE",
+      "chapter_code": "A8",
+      "parent_code": "A8_AREA",
+      "item_name": "近坝岸坡稳定",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 8204
+    },
+    {
+      "item_id": "tmpl_a8_area_landslide",
+      "item_code": "A8_AREA_LANDSLIDE",
+      "chapter_code": "A8",
+      "parent_code": "A8_AREA",
+      "item_name": "库区滑坡体",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 8205
+    },
+    {
+      "item_id": "tmpl_a8_area_sediment",
+      "item_code": "A8_AREA_SEDIMENT",
+      "chapter_code": "A8",
+      "parent_code": "A8_AREA",
+      "item_name": "库区淤积",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 8206
+    },
+    {
+      "item_id": "tmpl_a8_area_ice",
+      "item_code": "A8_AREA_ICE",
+      "chapter_code": "A8",
+      "parent_code": "A8_AREA",
+      "item_name": "库区冰冻影响",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 8207
+    },
+    {
+      "item_id": "tmpl_a8_area_resident",
+      "item_code": "A8_AREA_RESIDENT",
+      "chapter_code": "A8",
+      "parent_code": "A8_AREA",
+      "item_name": "库区居民点",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 8208
+    },
+    {
+      "item_id": "tmpl_a8_area_pollution",
+      "item_code": "A8_AREA_POLLUTION",
+      "chapter_code": "A8",
+      "parent_code": "A8_AREA",
+      "item_name": "库区污染源",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 8209
+    },
+    {
+      "item_id": "tmpl_a8_area_vegetation",
+      "item_code": "A8_AREA_VEGETATION",
+      "chapter_code": "A8",
+      "parent_code": "A8_AREA",
+      "item_name": "库区植被",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 8210
+    },
+    {
+      "item_id": "tmpl_a8_area_other",
+      "item_code": "A8_AREA_OTHER",
+      "chapter_code": "A8",
+      "parent_code": "A8_AREA",
+      "item_name": "库区其他",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 8211
+    },
+    {
+      "item_id": "tmpl_a8_down",
+      "item_code": "A8_DOWN",
+      "chapter_code": "A8",
+      "parent_code": "A8",
+      "item_name": "下游影响",
+      "item_type": "section",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": false,
+      "supports_audio": false,
+      "supports_location": false,
+      "supports_attachment": false,
+      "sort_order": 8300
+    },
+    {
+      "item_id": "tmpl_a8_down_reservoir",
+      "item_code": "A8_DOWN_RESERVOIR",
+      "chapter_code": "A8",
+      "parent_code": "A8_DOWN",
+      "item_name": "下游水库",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 8301
+    },
+    {
+      "item_id": "tmpl_a8_down_hydro",
+      "item_code": "A8_DOWN_HYDRO",
+      "chapter_code": "A8",
+      "parent_code": "A8_DOWN",
+      "item_name": "下游水电站",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 8302
+    },
+    {
+      "item_id": "tmpl_a8_down_beach_dam",
+      "item_code": "A8_DOWN_BEACH_DAM",
+      "chapter_code": "A8",
+      "parent_code": "A8_DOWN",
+      "item_name": "下游塘坝",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 8303
+    },
+    {
+      "item_id": "tmpl_a8_down_pond",
+      "item_code": "A8_DOWN_POND",
+      "chapter_code": "A8",
+      "parent_code": "A8_DOWN",
+      "item_name": "下游山塘",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 8304
+    },
+    {
+      "item_id": "tmpl_a8_down_dike",
+      "item_code": "A8_DOWN_DIKE",
+      "chapter_code": "A8",
+      "parent_code": "A8_DOWN",
+      "item_name": "下游堤防",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 8305
+    },
+    {
+      "item_id": "tmpl_a8_down_gate",
+      "item_code": "A8_DOWN_GATE",
+      "chapter_code": "A8",
+      "parent_code": "A8_DOWN",
+      "item_name": "下游闸坝",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 8306
+    },
+    {
+      "item_id": "tmpl_a8_down_pump",
+      "item_code": "A8_DOWN_PUMP",
+      "chapter_code": "A8",
+      "parent_code": "A8_DOWN",
+      "item_name": "下游泵站",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 8307
+    },
+    {
+      "item_id": "tmpl_a8_down_flood_area",
+      "item_code": "A8_DOWN_FLOOD_AREA",
+      "chapter_code": "A8",
+      "parent_code": "A8_DOWN",
+      "item_name": "下游行洪区",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 8308
+    },
+    {
+      "item_id": "tmpl_a8_down_section",
+      "item_code": "A8_DOWN_SECTION",
+      "chapter_code": "A8",
+      "parent_code": "A8_DOWN",
+      "item_name": "下游河道断面",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 8309
+    },
+    {
+      "item_id": "tmpl_a8_down_bridge",
+      "item_code": "A8_DOWN_BRIDGE",
+      "chapter_code": "A8",
+      "parent_code": "A8_DOWN",
+      "item_name": "下游跨河桥梁",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 8310
+    },
+    {
+      "item_id": "tmpl_a8_down_pipeline",
+      "item_code": "A8_DOWN_PIPELINE",
+      "chapter_code": "A8",
+      "parent_code": "A8_DOWN",
+      "item_name": "下游跨河管线",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 8311
+    },
+    {
+      "item_id": "tmpl_a8_down_village",
+      "item_code": "A8_DOWN_VILLAGE",
+      "chapter_code": "A8",
+      "parent_code": "A8_DOWN",
+      "item_name": "下游村庄",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 8312
+    },
+    {
+      "item_id": "tmpl_a8_down_town",
+      "item_code": "A8_DOWN_TOWN",
+      "chapter_code": "A8",
+      "parent_code": "A8_DOWN",
+      "item_name": "下游城镇",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 8313
+    },
+    {
+      "item_id": "tmpl_a8_down_factory",
+      "item_code": "A8_DOWN_FACTORY",
+      "chapter_code": "A8",
+      "parent_code": "A8_DOWN",
+      "item_name": "下游工矿企业",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 8314
+    },
+    {
+      "item_id": "tmpl_a8_down_pollution",
+      "item_code": "A8_DOWN_POLLUTION",
+      "chapter_code": "A8",
+      "parent_code": "A8_DOWN",
+      "item_name": "下游污染源",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 8315
+    },
+    {
+      "item_id": "tmpl_a8_down_school_hospital",
+      "item_code": "A8_DOWN_SCHOOL_HOSPITAL",
+      "chapter_code": "A8",
+      "parent_code": "A8_DOWN",
+      "item_name": "下游学校医院",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 8316
+    },
+    {
+      "item_id": "tmpl_a8_down_landscape",
+      "item_code": "A8_DOWN_LANDSCAPE",
+      "chapter_code": "A8",
+      "parent_code": "A8_DOWN",
+      "item_name": "下游景区",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 8317
+    },
+    {
+      "item_id": "tmpl_a8_down_road",
+      "item_code": "A8_DOWN_ROAD",
+      "chapter_code": "A8",
+      "parent_code": "A8_DOWN",
+      "item_name": "下游交通干线",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 8318
+    },
+    {
+      "item_id": "tmpl_a8_down_shelter",
+      "item_code": "A8_DOWN_SHELTER",
+      "chapter_code": "A8",
+      "parent_code": "A8_DOWN",
+      "item_name": "下游避险场所",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 8319
+    },
+    {
+      "item_id": "tmpl_a8_down_other",
+      "item_code": "A8_DOWN_OTHER",
+      "chapter_code": "A8",
+      "parent_code": "A8_DOWN",
+      "item_name": "下游其他",
+      "item_type": "inspection_item",
+      "applicable_dam_type": [
+        "earthfill",
+        "rockfill",
+        "concrete",
+        "masonry"
+      ],
+      "supports_photo": true,
+      "supports_audio": true,
+      "supports_location": true,
+      "supports_attachment": false,
+      "sort_order": 8320
+    }
+  ]
+}

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'project_structure_config_page.dart';
-import 'task_models.dart';
 import 'task_service.dart';
 
 class ProjectEditPage extends StatefulWidget {

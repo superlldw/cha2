@@ -4,16 +4,23 @@ import 'package:flutter/foundation.dart';
 
 import '../../core/api/api_client.dart';
 import '../../core/offline/local_db.dart';
+import '../../core/offline/local_structure_store.dart';
+import '../../core/offline/local_template_store.dart';
+import 'local_export_service.dart';
 import 'task_models.dart';
 
 class TaskService {
   TaskService(this._api, {LocalDb? localDb})
-      : _localDb = localDb ?? LocalDb.instance;
+      : _localDb = localDb ?? LocalDb.instance,
+        _localExportService = LocalExportService(localDb ?? LocalDb.instance);
 
   final ApiClient _api;
   final LocalDb _localDb;
+  final LocalExportService _localExportService;
   bool get _supportsOfflineCache => !kIsWeb;
   bool _isLocalOnlyTask(String taskId) => taskId.startsWith('lt_');
+  bool isLocalOnlyTask(String taskId) => _isLocalOnlyTask(taskId);
+  bool isLocalOnlyProject(String projectId) => projectId.startsWith('lp_');
 
   Future<SyncStatusSummary> getSyncStatusSummary() async {
     if (!_supportsOfflineCache) {
@@ -34,24 +41,16 @@ class TaskService {
           (data['items'] as List<dynamic>? ?? []).cast<Map<String, dynamic>>();
       return items.map(TaskListItem.fromJson).toList();
     }
-    try {
-      final data = await _api.get('/tasks') as Map<String, dynamic>;
-      final items =
-          (data['items'] as List<dynamic>? ?? []).cast<Map<String, dynamic>>();
-      await _localDb.upsertTasks(items);
-      return items.map(TaskListItem.fromJson).toList();
-    } catch (_) {
-      final cached = await _localDb.listTasks();
-      return cached
-          .map(
-            (e) => TaskListItem.fromJson({
-              ...e,
-              'enabled_chapters':
-                  jsonDecode(e['enabled_chapters_json'] as String? ?? '[]'),
-            }),
-          )
-          .toList();
-    }
+    final cached = await _localDb.listTasks();
+    return cached
+        .map(
+          (e) => TaskListItem.fromJson({
+            ...e,
+            'enabled_chapters':
+                jsonDecode(e['enabled_chapters_json'] as String? ?? '[]'),
+          }),
+        )
+        .toList();
   }
 
   Future<String> createDebugTask({required String reservoirName}) async {
@@ -95,6 +94,27 @@ class TaskService {
         .map((e) => e.trim())
         .where((e) => e.isNotEmpty)
         .toList();
+
+    Future<String> createLocalCopy() async {
+      final templateTree = await LocalTemplateStore.buildTaskTemplateTree(
+        damType: damType,
+        enabledChapters: enabledChapters,
+      );
+      return _localDb.createLocalTask(
+        projectId: projectId,
+        reservoirName: reservoirName,
+        damType: damType,
+        inspectionType: inspectionType,
+        inspectionDate: date,
+        weather: weather,
+        enabledChapters: enabledChapters,
+        templateTree: templateTree,
+      );
+    }
+
+    if (_supportsOfflineCache && isLocalOnlyProject(projectId)) {
+      return createLocalCopy();
+    }
     try {
       final data = await _api.post('/tasks', body: {
         'project_id': projectId,
@@ -111,7 +131,10 @@ class TaskService {
       await fetchTasks();
       return taskId;
     } catch (e) {
-      throw Exception('创建任务失败，请检查网络或项目配置: $e');
+      if (_supportsOfflineCache) {
+        return createLocalCopy();
+      }
+      throw Exception('创建检查任务失败，请检查网络或项目配置: $e');
     }
   }
 
@@ -139,23 +162,42 @@ class TaskService {
     } catch (_) {
       if (!_supportsOfflineCache) rethrow;
       final date = inspectionDate.toIso8601String().split('T').first;
+      final projectId = await _localDb.createLocalProject(
+        reservoirName: reservoirName,
+        damType: damType,
+      );
+      final templateTree = await LocalTemplateStore.buildTaskTemplateTree(
+        damType: damType,
+        enabledChapters: const ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8'],
+      );
       return _localDb.createLocalTask(
+        projectId: projectId,
         reservoirName: reservoirName,
         damType: damType,
         inspectionType: 'routine',
         inspectionDate: date,
         weather: weather,
         enabledChapters: const ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8'],
+        templateTree: templateTree,
       );
     }
   }
 
   Future<void> deleteTask(String taskId) async {
+    if (_supportsOfflineCache && _isLocalOnlyTask(taskId)) {
+      await _localDb.deleteLocalTask(taskId);
+      return;
+    }
     await _api.delete('/tasks/$taskId');
   }
 
   Future<List<ProjectListItem>> fetchProjects(
       {bool includeArchived = false}) async {
+    if (_supportsOfflineCache) {
+      final cached =
+          await _localDb.listProjects(includeArchived: includeArchived);
+      return cached.map(ProjectListItem.fromJson).toList();
+    }
     final data = await _api.get(
       '/projects',
       query: includeArchived ? {'include_archived': true} : null,
@@ -170,6 +212,13 @@ class TaskService {
     required String damType,
     String? description,
   }) async {
+    if (_supportsOfflineCache) {
+      return _localDb.createLocalProject(
+        reservoirName: reservoirName,
+        damType: damType,
+        description: description,
+      );
+    }
     final data = await _api.post('/projects', body: {
       'reservoir_name': reservoirName,
       'dam_type': damType,
@@ -179,6 +228,12 @@ class TaskService {
   }
 
   Future<ProjectDetailItem> fetchProjectDetail(String projectId) async {
+    if (_supportsOfflineCache) {
+      final cached = await _localDb.getProject(projectId);
+      if (cached != null) {
+        return ProjectDetailItem.fromJson(cached);
+      }
+    }
     final data = await _api.get('/projects/$projectId') as Map<String, dynamic>;
     return ProjectDetailItem.fromJson(data);
   }
@@ -189,6 +244,18 @@ class TaskService {
     required String damType,
     String? description,
   }) async {
+    if (_supportsOfflineCache && isLocalOnlyProject(projectId)) {
+      final updated = await _localDb.updateLocalProject(
+        projectId: projectId,
+        reservoirName: reservoirName,
+        damType: damType,
+        description: description,
+      );
+      if (updated == null) {
+        throw Exception('project not found');
+      }
+      return ProjectDetailItem.fromJson(updated);
+    }
     final data = await _api.patch('/projects/$projectId', body: {
       'reservoir_name': reservoirName,
       'dam_type': damType,
@@ -198,16 +265,36 @@ class TaskService {
   }
 
   Future<void> deleteProject(String projectId, {bool force = false}) async {
+    if (_supportsOfflineCache && isLocalOnlyProject(projectId)) {
+      await _localDb.deleteLocalProject(projectId);
+      return;
+    }
     final suffix = force ? '?force=true' : '';
     await _api.delete('/projects/$projectId$suffix');
   }
 
   Future<void> archiveProject(String projectId) async {
+    if (_supportsOfflineCache && isLocalOnlyProject(projectId)) {
+      await _localDb.archiveLocalProject(projectId);
+      return;
+    }
     await _api.patch('/projects/$projectId/archive', body: {});
   }
 
   Future<List<StructureInstanceItem>> fetchProjectStructureInstances(
       String projectId) async {
+    if (_supportsOfflineCache && isLocalOnlyProject(projectId)) {
+      final rows = await _localDb.listStructureInstances(projectId);
+      return rows
+          .map(
+            (row) => StructureInstanceItem.fromJson({
+              ...row,
+              'enabled_for_capture': row['enabled_for_capture'] == 1,
+              'enabled_for_report': row['enabled_for_report'] == 1,
+            }),
+          )
+          .toList();
+    }
     final data = await _api.get('/projects/$projectId/structure-instances')
         as Map<String, dynamic>;
     final items =
@@ -220,6 +307,69 @@ class TaskService {
     required List<Map<String, dynamic>> presets,
     List<Map<String, dynamic>> customInstances = const [],
   }) async {
+    if (_supportsOfflineCache && isLocalOnlyProject(projectId)) {
+      final rows = <Map<String, dynamic>>[];
+      final presetCountMap = <String, int>{
+        for (final preset in presets)
+          preset['object_type'].toString(): (preset['count'] as int? ?? 1),
+      };
+      final auxCount = presetCountMap['aux_dam'] ?? 0;
+      var sortOrder = 10;
+
+      for (final preset in presets) {
+        final objectType = preset['object_type'].toString();
+        final count = (preset['count'] as int? ?? 1);
+        var names = LocalStructureStore.buildDefaultInstanceNames(
+          objectType,
+          count,
+        );
+        if (objectType == 'main_dam' && auxCount == 0) {
+          names = ['大坝'];
+        }
+        final meta = LocalStructureStore.getObjectMeta(objectType);
+        for (final name in names) {
+          rows.add(
+            await _localDb.createLocalStructureInstance(
+              projectId: projectId,
+              categoryCode: meta['category']!.toString(),
+              objectType: objectType,
+              instanceName: name,
+              templateSourceType: meta['template']!.toString(),
+              defaultPartTemplateCode: meta['template']!.toString(),
+              sortOrder: sortOrder,
+            ),
+          );
+          sortOrder += 10;
+        }
+      }
+
+      for (final custom in customInstances) {
+        rows.add(
+          await _localDb.createLocalStructureInstance(
+            projectId: projectId,
+            categoryCode: custom['category_code']?.toString() ?? 'other',
+            objectType: custom['object_type']?.toString() ?? 'custom',
+            instanceName: custom['instance_name']?.toString() ?? '自定义对象',
+            templateSourceType:
+                custom['template_source_type']?.toString() ?? 'main_dam',
+            defaultPartTemplateCode:
+                custom['template_source_type']?.toString() ?? 'main_dam',
+            sortOrder: sortOrder,
+          ),
+        );
+        sortOrder += 10;
+      }
+
+      return rows
+          .map(
+            (row) => StructureInstanceItem.fromJson({
+              ...row,
+              'enabled_for_capture': row['enabled_for_capture'] == 1,
+              'enabled_for_report': row['enabled_for_report'] == 1,
+            }),
+          )
+          .toList();
+    }
     final data = await _api.post(
       '/projects/$projectId/structure-instances/batch-init',
       body: {
@@ -239,6 +389,29 @@ class TaskService {
     String? categoryCode,
     String? templateSourceType,
   }) async {
+    if (_supportsOfflineCache && isLocalOnlyProject(projectId)) {
+      final meta = LocalStructureStore.getObjectMeta(objectType);
+      final existing = await _localDb.listStructureInstances(projectId);
+      final sortOrder = existing.isEmpty
+          ? 10
+          : ((existing.last['sort_order'] as int?) ?? 0) + 10;
+      final row = await _localDb.createLocalStructureInstance(
+        projectId: projectId,
+        categoryCode: categoryCode ?? meta['category']!.toString(),
+        objectType: objectType,
+        instanceName: instanceName.trim(),
+        templateSourceType:
+            templateSourceType ?? meta['template']!.toString(),
+        defaultPartTemplateCode:
+            templateSourceType ?? meta['template']!.toString(),
+        sortOrder: sortOrder,
+      );
+      return StructureInstanceItem.fromJson({
+        ...row,
+        'enabled_for_capture': row['enabled_for_capture'] == 1,
+        'enabled_for_report': row['enabled_for_report'] == 1,
+      });
+    }
     final data =
         await _api.post('/projects/$projectId/structure-instances', body: {
       'object_type': objectType,
@@ -258,6 +431,23 @@ class TaskService {
     bool? enabledForReport,
     int? sortOrder,
   }) async {
+    if (_supportsOfflineCache && isLocalOnlyProject(projectId)) {
+      final row = await _localDb.patchLocalStructureInstance(
+        instanceId: instanceId,
+        instanceName: instanceName,
+        enabledForCapture: enabledForCapture,
+        enabledForReport: enabledForReport,
+        sortOrder: sortOrder,
+      );
+      if (row == null) {
+        throw Exception('structure instance not found');
+      }
+      return StructureInstanceItem.fromJson({
+        ...row,
+        'enabled_for_capture': row['enabled_for_capture'] == 1,
+        'enabled_for_report': row['enabled_for_report'] == 1,
+      });
+    }
     final data = await _api.patch(
       '/projects/$projectId/structure-instances/$instanceId',
       body: {
@@ -273,6 +463,10 @@ class TaskService {
   Future<List<StructurePartTemplateItem>> fetchStructurePartTemplates({
     String? objectType,
   }) async {
+    if (_supportsOfflineCache && objectType != null && objectType.isNotEmpty) {
+      final rows = LocalStructureStore.listStructurePartTemplates(objectType);
+      return rows.map((row) => StructurePartTemplateItem.fromJson(row)).toList();
+    }
     final query = objectType == null ? null : {'object_type': objectType};
     final data = await _api.get('/structure-part-templates', query: query)
         as Map<String, dynamic>;
@@ -559,6 +753,29 @@ class TaskService {
       }) as Map<String, dynamic>;
       return data['result_id'] as String;
     }
+    if (_isLocalOnlyTask(taskId)) {
+      final row = await _localDb.upsertResultFromPayload(
+        taskId: taskId,
+        itemCode: itemCode,
+        payload: {
+          'task_id': taskId,
+          'item_code': itemCode,
+          'check_status': checkStatus,
+          'issue_flag': issueFlag,
+          'issue_type': issueFlag ? issueType : <String>[],
+          'severity_level': issueFlag ? severityLevel : null,
+          'check_record': checkRecord,
+          'suggestion': suggestion,
+          'location_desc': '',
+          'gps_lat': null,
+          'gps_lng': null,
+          'checked_at': DateTime.now().toUtc().toIso8601String(),
+          'checked_by': 'mobile_user',
+        },
+        syncStatus: 'local',
+      );
+      return row['local_result_id'] as String;
+    }
     final now = DateTime.now().toUtc().toIso8601String();
     final payload = {
       'task_id': taskId,
@@ -612,6 +829,9 @@ class TaskService {
   }) async {
     if (!_supportsOfflineCache) {
       return 'synced';
+    }
+    if (_isLocalOnlyTask(taskId)) {
+      return 'local';
     }
     Map<String, dynamic>? row;
     if (resultId != null && resultId.isNotEmpty) {
@@ -675,7 +895,9 @@ class TaskService {
           (e) => EvidenceItem(
             evidenceId: e.evidenceId,
             evidenceType: e.evidenceType,
-            fileUrl: e.fileUrl.startsWith('http')
+            fileUrl: e.fileUrl.startsWith('http') ||
+                    e.fileUrl.startsWith('/') ||
+                    e.fileUrl.contains(r':\')
                 ? e.fileUrl
                 : _api.resolveUrl(e.fileUrl),
             caption: e.caption,
@@ -715,6 +937,18 @@ class TaskService {
     final resultRow = await _localDb.findResultByAnyId(resultId);
     final localResultId = resultRow?['local_result_id']?.toString() ?? resultId;
     final serverResultId = resultRow?['server_result_id']?.toString();
+    final resultTaskId = resultRow?['task_id']?.toString() ?? '';
+
+    if (resultTaskId.isNotEmpty && _isLocalOnlyTask(resultTaskId)) {
+      final saved = await _localDb.upsertEvidenceMetadata(
+        resultLocalId: localResultId,
+        evidenceType: 'photo',
+        localFilePath: filePath ?? '',
+        caption: caption,
+        syncStatus: 'local',
+      );
+      return saved['local_evidence_id'] as String;
+    }
 
     if (serverResultId != null && serverResultId.isNotEmpty) {
       try {
@@ -973,6 +1207,9 @@ class TaskService {
   }
 
   Future<String> exportPhotoPackage(String taskId) async {
+    if (_supportsOfflineCache && _isLocalOnlyTask(taskId)) {
+      return _localExportService.exportPhotoPackage(taskId);
+    }
     final data = await _api.get('/tasks/$taskId/exports/photo-package')
         as Map<String, dynamic>;
     final url = data['file_url'] as String? ?? '';
@@ -983,6 +1220,9 @@ class TaskService {
   }
 
   Future<String> exportInspectionDoc(String taskId) async {
+    if (_supportsOfflineCache && _isLocalOnlyTask(taskId)) {
+      return _localExportService.exportInspectionDoc(taskId);
+    }
     final data = await _api.get('/tasks/$taskId/exports/inspection-doc')
         as Map<String, dynamic>;
     final url = data['file_url'] as String? ?? '';
@@ -1005,6 +1245,18 @@ class TaskService {
     double? gpsLng,
     String? locationDesc,
   }) async {
+    if (_supportsOfflineCache && _isLocalOnlyTask(taskId)) {
+      return _localDb.createLocalCapture(
+        taskId: taskId,
+        structureInstanceId: structureInstanceId,
+        partCode: partCode,
+        quickPartTag: quickPartTag,
+        quickStatus: quickStatus,
+        rawNote: rawNote,
+        speechText: speechText,
+        createdBy: createdBy,
+      );
+    }
     final data = await _api.post('/captures', body: {
       'task_id': taskId,
       'structure_instance_id': structureInstanceId,
@@ -1028,6 +1280,17 @@ class TaskService {
     String? fileName,
     String mediaType = 'photo',
   }) async {
+    final localCapture = _supportsOfflineCache
+        ? await _localDb.getCapture(captureId)
+        : null;
+    if (localCapture != null) {
+      await _localDb.addLocalCaptureMedia(
+        captureId: captureId,
+        mediaType: mediaType,
+        localPath: filePath,
+      );
+      return;
+    }
     await _api.postMultipart(
       '/captures/$captureId/media',
       fileField: 'file',
@@ -1042,6 +1305,16 @@ class TaskService {
     required String captureId,
     required String speechText,
   }) async {
+    final localCapture = _supportsOfflineCache
+        ? await _localDb.getCapture(captureId)
+        : null;
+    if (localCapture != null) {
+      await _localDb.updateLocalCaptureSpeechText(
+        captureId: captureId,
+        speechText: speechText,
+      );
+      return;
+    }
     await _api.post(
       '/captures/$captureId/speech-transcribe',
       body: {'speech_text': speechText},
@@ -1052,6 +1325,54 @@ class TaskService {
     String taskId, {
     String? reviewStatus = 'pending',
   }) async {
+    if (_supportsOfflineCache && _isLocalOnlyTask(taskId)) {
+      final rows = await _localDb.listTaskCaptures(
+        taskId,
+        reviewStatus: reviewStatus,
+      );
+      final task = await _localDb.getTask(taskId);
+      final projectId = task?['project_id']?.toString() ?? '';
+      final instances = projectId.isEmpty
+          ? const <Map<String, dynamic>>[]
+          : await _localDb.listStructureInstances(projectId);
+      final instanceMap = {
+        for (final row in instances) row['instance_id'].toString(): row,
+      };
+      final items = <CaptureListItem>[];
+      for (final row in rows) {
+        final captureId = row['capture_id'].toString();
+        final medias = await _localDb.listCaptureMedia(captureId);
+        final instance =
+            instanceMap[row['structure_instance_id']?.toString() ?? ''];
+        final objectType =
+            instance?['template_source_type']?.toString() ?? 'main_dam';
+        items.add(
+          CaptureListItem.fromJson({
+            'capture_id': captureId,
+            'task_id': row['task_id'],
+            'created_at': row['created_at'],
+            'structure_instance_id': row['structure_instance_id'],
+            'structure_instance_name':
+                instance?['instance_name']?.toString() ?? '未命名对象',
+            'part_code': row['part_code'],
+            'part_name': LocalStructureStore.getPartName(
+                  objectType,
+                  row['part_code']?.toString() ?? '',
+                ) ??
+                row['part_code'],
+            'quick_part_tag': row['quick_part_tag'],
+            'quick_status': row['quick_status'],
+            'speech_text': row['speech_text'],
+            'raw_note': row['raw_note'],
+            'review_status': row['review_status'],
+            'linked_result_id': row['linked_result_id'],
+            'photo_count':
+                medias.where((media) => media['media_type'] == 'photo').length,
+          }),
+        );
+      }
+      return items;
+    }
     final query = <String, dynamic>{};
     if (reviewStatus != null && reviewStatus.isNotEmpty) {
       query['review_status'] = reviewStatus;
@@ -1066,12 +1387,69 @@ class TaskService {
   }
 
   Future<List<CaptureListItem>> fetchAllTaskCaptures(String taskId) async {
+    if (_supportsOfflineCache && _isLocalOnlyTask(taskId)) {
+      final items = await fetchTaskCaptures(taskId, reviewStatus: 'confirmed');
+      items.sort((a, b) => b.createdAt.compareTo(a.createdAt));
+      return items;
+    }
     final items = await fetchTaskCaptures(taskId, reviewStatus: 'confirmed');
     items.sort((a, b) => b.createdAt.compareTo(a.createdAt));
     return items;
   }
 
   Future<CaptureDetail> fetchCaptureDetail(String captureId) async {
+    final localCapture = _supportsOfflineCache
+        ? await _localDb.getCapture(captureId)
+        : null;
+    if (localCapture != null) {
+      final taskId = localCapture['task_id']?.toString() ?? '';
+      final task = taskId.isEmpty ? null : await _localDb.getTask(taskId);
+      final projectId = task?['project_id']?.toString() ?? '';
+      final instances = projectId.isEmpty
+          ? const <Map<String, dynamic>>[]
+          : await _localDb.listStructureInstances(projectId);
+      final instance = instances.firstWhere(
+        (row) =>
+            row['instance_id']?.toString() ==
+            localCapture['structure_instance_id']?.toString(),
+        orElse: () => <String, dynamic>{},
+      );
+      final objectType =
+          instance['template_source_type']?.toString() ?? 'main_dam';
+      final mediaRows = await _localDb.listCaptureMedia(captureId);
+      return CaptureDetail.fromJson({
+        'capture_id': localCapture['capture_id'],
+        'task_id': localCapture['task_id'],
+        'created_at': localCapture['created_at'],
+        'created_by': localCapture['created_by'],
+        'structure_instance_id': localCapture['structure_instance_id'],
+        'structure_instance_name':
+            instance['instance_name']?.toString() ?? '未命名对象',
+        'part_code': localCapture['part_code'],
+        'part_name': LocalStructureStore.getPartName(
+              objectType,
+              localCapture['part_code']?.toString() ?? '',
+            ) ??
+            localCapture['part_code'],
+        'quick_part_tag': localCapture['quick_part_tag'],
+        'quick_status': localCapture['quick_status'],
+        'raw_note': localCapture['raw_note'],
+        'speech_text': localCapture['speech_text'],
+        'review_status': localCapture['review_status'],
+        'linked_result_id': localCapture['linked_result_id'],
+        'media': mediaRows
+            .map(
+              (row) => {
+                'media_id': row['media_id'],
+                'media_type': row['media_type'],
+                'local_path': row['local_path'],
+                'server_url': row['server_url'],
+                'shot_time': row['shot_time'],
+              },
+            )
+            .toList(),
+      });
+    }
     final data = await _api.get('/captures/$captureId') as Map<String, dynamic>;
     final raw = CaptureDetail.fromJson(data);
     final mappedMedia = raw.media
@@ -1109,6 +1487,13 @@ class TaskService {
   }
 
   Future<void> deleteCapture(String captureId) async {
+    final localCapture = _supportsOfflineCache
+        ? await _localDb.getCapture(captureId)
+        : null;
+    if (localCapture != null) {
+      await _localDb.deleteLocalCapture(captureId);
+      return;
+    }
     try {
       await _api.delete('/captures/$captureId');
     } catch (e) {
@@ -1122,6 +1507,13 @@ class TaskService {
   }
 
   Future<void> deleteCaptureCompletely(String captureId) async {
+    final localCapture = _supportsOfflineCache
+        ? await _localDb.getCapture(captureId)
+        : null;
+    if (localCapture != null) {
+      await _localDb.deleteLocalCapture(captureId);
+      return;
+    }
     await _api.post('/captures/$captureId/purge', body: const {});
   }
 
@@ -1136,6 +1528,27 @@ class TaskService {
     String? suggestion,
     String? checkedBy,
   }) async {
+    final localCapture = _supportsOfflineCache
+        ? await _localDb.getCapture(captureId)
+        : null;
+    if (localCapture != null) {
+      final taskId = localCapture['task_id']?.toString() ?? '';
+      final resultId = await saveResult(
+        taskId: taskId,
+        itemCode: itemCode,
+        checkStatus: checkStatus,
+        issueFlag: issueFlag,
+        issueType: issueType,
+        severityLevel: severityLevel,
+        checkRecord: checkRecord ?? '',
+        suggestion: suggestion ?? '',
+      );
+      await _localDb.markCaptureConfirmed(
+        captureId: captureId,
+        linkedResultId: resultId,
+      );
+      return resultId;
+    }
     final data = await _api.post('/captures/$captureId/confirm', body: {
       'item_code': itemCode,
       'check_status': checkStatus,

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:open_filex/open_filex.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../core/widgets/loading_error_view.dart';
@@ -168,11 +169,26 @@ class _TaskDetailPageState extends State<TaskDetailPage> {
   }
 
   Future<void> _openExportUrl(String url) async {
+    if (!kIsWeb) {
+      final localFile = File(url);
+      if (await localFile.exists()) {
+        final result = await OpenFilex.open(localFile.path);
+        if (result.type == ResultType.done) {
+          return;
+        }
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('文件已导出到: ${localFile.path}')),
+          );
+        }
+        return;
+      }
+    }
     final uri = Uri.parse(url);
     final ok = await launchUrl(uri, mode: LaunchMode.externalApplication);
     if (!ok && mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('无法打开导出链接: $url')),
+        SnackBar(content: Text('无法自动打开导出文件，路径/链接为: $url')),
       );
     }
   }
@@ -398,7 +414,9 @@ class _TaskDetailPageState extends State<TaskDetailPage> {
             (media) => EvidenceItem(
               evidenceId: 'capture_${item.captureId}_${media.mediaId}',
               evidenceType: 'photo',
-              fileUrl: (media.serverUrl ?? '').trim(),
+              fileUrl: (media.serverUrl ?? '').trim().isNotEmpty
+                  ? (media.serverUrl ?? '').trim()
+                  : (media.localPath ?? '').trim(),
               caption: '采集记录继承照片',
               gpsLat: null,
               gpsLng: null,
